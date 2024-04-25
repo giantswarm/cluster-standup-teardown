@@ -1,27 +1,17 @@
-# General Go template repository
+# cluster-standup-teardown
 
-This is a general template repository containing some basic files every GitHub repo owned by Giant Swarm should have.
+<a href="https://godoc.org/github.com/giantswarm/cluster-standup-teardown"><img src="https://godoc.org/github.com/giantswarm/cluster-standup-teardown?status.svg"></a>
 
-Note also these more specific repositories:
+A helper module for use in Giant Swarm E2E test frameworks to handle the creation and deletion of workload clusters to perform tests against.
 
-- [template-app](https://github.com/giantswarm/template-app)
-- [gitops-template](https://github.com/giantswarm/gitops-template)
-- [python-app-template](https://github.com/giantswarm/python-app-template)
+> Note: This should not be used as a general purpose tool to create Giant Swarm clusters and is solely designed for use in our test frameworks.
 
-## Creating a new repository
+## Installation
 
-Please do not use the `Use this template` function in the GitHub web UI.
+```shell
+go get github.com/giantswarm/cluster-standup-teardown
+```
 
-Check out the according [handbook article](https://handbook.giantswarm.io/docs/dev-and-releng/repository/go/) for better instructions.
+## Documentation
 
-### Some suggestions for your README
-
-After you have created your new repository, you may want to add some of these badges to the top of your README.
-
-- **CircleCI:** After enabling builds for this repo via [this link](https://circleci.com/setup-project/gh/giantswarm/REPOSITORY_NAME), you can find badge code on [this page](https://app.circleci.com/settings/project/github/giantswarm/REPOSITORY_NAME/status-badges).
-
-- **Go reference:** use [this helper](https://pkg.go.dev/badge/) to create the markdown code.
-
-- **Go report card:** enter the module name on the [front page](https://goreportcard.com/) and hit "Generate report". Then use this markdown code for your badge: `[![Go report card](https://goreportcard.com/badge/github.com/giantswarm/REPOSITORY_NAME)](https://goreportcard.com/report/github.com/giantswarm/REPOSITORY_NAME)`
-
-- **Sourcegraph "used by N projects" badge**: for public Go repos only: `[![Sourcegraph](https://sourcegraph.com/github.com/giantswarm/REPOSITORY_NAME/-/badge.svg)](https://sourcegraph.com/github.com/giantswarm/REPOSITORY_NAME)`
+Documentation can be found at: [pkg.go.dev/github.com/giantswarm/cluster-standup-teardown](https://pkg.go.dev/github.com/giantswarm/cluster-standup-teardown).
