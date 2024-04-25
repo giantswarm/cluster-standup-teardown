@@ -12,6 +12,10 @@ A helper module for use in Giant Swarm E2E test frameworks to handle the creatio
 go get github.com/giantswarm/cluster-standup-teardown
 ```
 
-## Documentation
+## API Documentation
 
 Documentation can be found at: [pkg.go.dev/github.com/giantswarm/cluster-standup-teardown](https://pkg.go.dev/github.com/giantswarm/cluster-standup-teardown).
+
+## CLI Documentation
+
+// TODO
