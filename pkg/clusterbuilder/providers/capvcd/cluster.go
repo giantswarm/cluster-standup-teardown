@@ -27,7 +27,7 @@ var (
 type ClusterBuilder struct{}
 
 // NewClusterApp builds a new CAPVCD cluster App
-func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesFile string, defaultAppsValuesFile string) *application.Cluster {
+func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -38,8 +38,8 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 	return application.NewClusterApp(clusterName, application.ProviderCloudDirector).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
-			values.MustOverlayValues(baseClusterValues, clusterValuesFile),
-			values.MustOverlayValues(baseDefaultAppsValues, defaultAppsValuesFile),
+			values.MustMergeValues(append([]string{baseClusterValues}, clusterValuesOverrides...)...),
+			values.MustMergeValues(append([]string{baseDefaultAppsValues}, defaultAppsValuesOverrides...)...),
 			&application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,

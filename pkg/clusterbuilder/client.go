@@ -3,6 +3,7 @@ package clusterbuilder
 import (
 	. "github.com/onsi/gomega"
 
+	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
 	"github.com/giantswarm/clustertest/pkg/logger"
@@ -10,7 +11,7 @@ import (
 
 // ClusterBuilder is an interface that provides a function for building provider-specific Cluster apps
 type ClusterBuilder interface {
-	NewClusterApp(clusterName string, orgName string, clusterValuesFile string, defaultAppsValuesFile string) *application.Cluster
+	NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster
 }
 
 // LoadOrBuildCluster attempts to load a pre-built workload cluster if the appropriate env vars are set and if not will build a new Cluster
@@ -25,7 +26,11 @@ func LoadOrBuildCluster(framework *clustertest.Framework, clusterBuilder Cluster
 		return cluster
 	}
 
-	cluster = clusterBuilder.NewClusterApp("", "", "./test_data/cluster_values.yaml", "./test_data/default-apps_values.yaml")
+	cluster = clusterBuilder.NewClusterApp(
+		"", "",
+		[]string{values.MustLoadValuesFile("./test_data/cluster_values.yaml")},
+		[]string{values.MustLoadValuesFile("./test_data/default-apps_values.yaml")},
+	)
 	logger.Log("Workload cluster name: %s", cluster.Name)
 
 	return cluster

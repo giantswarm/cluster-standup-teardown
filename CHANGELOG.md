@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Implemented value file merging / overlaying. Values provided to the clusterbuilder will be merged ontop of the default ones included in this module.
+- `clusterbuilder` updated to take in a slice of values overrides that are layered ontop of the default values
+- Updated `LoadOrBuildCluster` and `standup` to work with the `clusterbuilder` refactoring.
+
 ## [1.0.0] - 2024-04-26
 
 ### Added

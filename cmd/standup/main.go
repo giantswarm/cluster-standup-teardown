@@ -25,6 +25,7 @@ import (
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capvcd"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capz"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/standup"
+	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 )
 
 var (
@@ -109,23 +110,26 @@ func run(cmd *cobra.Command, args []string) error {
 
 	fmt.Printf("Standing up cluster...\n\nProvider:\t\t%s\nCluster Name:\t\t%s\nOrg Name:\t\t%s\nResults Directory:\t%s\n\n", provider, clusterName, orgName, outputDirectory)
 
+	clusterValuesOverrides := []string{values.MustLoadValuesFile(clusterValues)}
+	defaultAppValuesOverrides := []string{values.MustLoadValuesFile(defaultAppValues)}
+
 	var cluster *application.Cluster
 	switch provider {
 	case application.ProviderVSphere:
 		clusterBuilder := capv.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 	case application.ProviderCloudDirector:
 		clusterBuilder := capvcd.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 	case application.ProviderAWS:
 		clusterBuilder := capa.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 	case application.ProviderEKS:
 		clusterBuilder := capa.ManagedClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 		// As EKS has no control plane we only check for worker nodes being ready
 		clusterReadyFns = []func(wcClient *client.Client){
@@ -139,7 +143,7 @@ func run(cmd *cobra.Command, args []string) error {
 		}
 	case application.ProviderAzure:
 		clusterBuilder := capz.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 	default:
 		cluster = application.NewClusterApp(clusterName, provider).
