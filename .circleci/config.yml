@@ -6,10 +6,9 @@ orbs:
 workflows:
   test:
     jobs:
-      - architect/go-build:
+      - architect/go-test:
           context: architect
-          name: go-build
-          binary: template
+          name: go-test
           filters:
             # Trigger job also on git tag.
             tags:
@@ -18,7 +17,7 @@ workflows:
           context: architect
           name: push-to-registries
           requires:
-            - go-build
+            - go-test
           filters:
             # Trigger job also on git tag.
             tags:
