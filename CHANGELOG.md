@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2024-04-26
+
 ### Added
 
 - ClusterBuilder for CAPA, CAPV, CAPVCD, CAPZ and EKS along with default values for each
@@ -14,4 +16,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/tree/main
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/giantswarm/cluster-standup-teardown/releases/tag/v1.0.0
