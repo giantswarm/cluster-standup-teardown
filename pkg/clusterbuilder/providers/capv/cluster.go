@@ -14,7 +14,7 @@ import (
 const (
 	RegCredSecretName          = "container-registries-configuration"
 	RegCredSecretNamespace     = "default"
-	VSphereCredSecretName      = "vsphere-credentials"
+	VSphereCredSecretName      = "vsphere-credentials" //nolint:gosec
 	VSphereCredSecretNamespace = "org-giantswarm"
 )
 

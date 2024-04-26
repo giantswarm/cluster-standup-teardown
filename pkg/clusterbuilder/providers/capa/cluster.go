@@ -64,6 +64,7 @@ func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string
 
 	// WC CIDRs have to not overlap and be in the 10.225. - 10.255. range, so
 	// we select a random number in that range and set it as the second octet.
+	//nolint:gosec
 	randomOctet := rand.Intn(30) + 225
 	cidrOctet := fmt.Sprintf("%d", randomOctet)
 	templateValues := &application.TemplateValues{

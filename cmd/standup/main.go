@@ -51,14 +51,14 @@ var (
 	// Functions to run after cluster creation to confirm it is up and ready to use
 	clusterReadyFns []func(wcClient *client.Client) = []func(wcClient *client.Client){
 		func(wcClient *client.Client) {
-			wait.For(
+			_ = wait.For(
 				wait.AreNumNodesReady(context.Background(), wcClient, controlPlaneNodes, &cr.MatchingLabels{"node-role.kubernetes.io/control-plane": ""}),
 				wait.WithTimeout(20*time.Minute),
 				wait.WithInterval(15*time.Second),
 			)
 		},
 		func(wcClient *client.Client) {
-			wait.For(
+			_ = wait.For(
 				wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, client.DoesNotHaveLabels{"node-role.kubernetes.io/control-plane"}),
 				wait.WithTimeout(20*time.Minute),
 				wait.WithInterval(15*time.Second),
@@ -79,8 +79,8 @@ func init() {
 	standupCmd.Flags().StringVar(&clusterVersion, "cluster-version", "latest", "The version of the cluster app to install")
 	standupCmd.Flags().StringVar(&defaultAppVersion, "default-apps-version", "latest", "The version of the default-apps app to install")
 
-	standupCmd.MarkFlagRequired("provider")
-	standupCmd.MarkFlagRequired("context")
+	_ = standupCmd.MarkFlagRequired("provider")
+	_ = standupCmd.MarkFlagRequired("context")
 }
 
 func main() {
@@ -131,7 +131,7 @@ func run(cmd *cobra.Command, args []string) error {
 		// As EKS has no control plane we only check for worker nodes being ready
 		clusterReadyFns = []func(wcClient *client.Client){
 			func(wcClient *client.Client) {
-				wait.For(
+				_ = wait.For(
 					wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, &cr.MatchingLabels{"node-role.kubernetes.io/worker": ""}),
 					wait.WithTimeout(20*time.Minute),
 					wait.WithInterval(15*time.Second),
@@ -172,6 +172,9 @@ func run(cmd *cobra.Command, args []string) error {
 		return err
 	}
 	_, err = resultsFile.Write(resultBytes)
+	if err != nil {
+		return err
+	}
 
 	resultsFile.Close()
 
