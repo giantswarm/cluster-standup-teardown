@@ -23,7 +23,7 @@ var (
 type PrivateClusterBuilder struct{}
 
 // NewClusterApp builds a new private CAPA cluster App
-func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesFile string, defaultAppsValuesFile string) *application.Cluster {
+func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -47,8 +47,9 @@ func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string
 	return application.NewClusterApp(clusterName, application.ProviderAWS).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
-			values.MustOverlayValues(basePrivateClusterValues, clusterValuesFile),
-			values.MustOverlayValues(basePrivateDefaultAppsValues, defaultAppsValuesFile),
+
+			values.MustMergeValues(append([]string{basePrivateClusterValues}, clusterValuesOverrides...)...),
+			values.MustMergeValues(append([]string{basePrivateDefaultAppsValues}, defaultAppsValuesOverrides...)...),
 			templateValues,
 		)
 }

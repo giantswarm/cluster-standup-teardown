@@ -21,7 +21,7 @@ var (
 type ManagedClusterBuilder struct{}
 
 // NewClusterApp builds a new CAPA EKS cluster App
-func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesFile string, defaultAppsValuesFile string) *application.Cluster {
+func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -32,8 +32,8 @@ func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string
 	return application.NewClusterApp(clusterName, application.ProviderEKS).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
-			values.MustOverlayValues(baseManagedClusterValues, clusterValuesFile),
-			values.MustOverlayValues(baseManagedDefaultAppsValues, defaultAppsValuesFile),
+			values.MustMergeValues(append([]string{baseManagedClusterValues}, clusterValuesOverrides...)...),
+			values.MustMergeValues(append([]string{baseManagedDefaultAppsValues}, defaultAppsValuesOverrides...)...),
 			&application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,

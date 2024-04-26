@@ -1,25 +1,51 @@
 package values
 
-import "os"
+import (
+	"os"
 
-// OverlayValues takes in a default values string and an optional path to a file containing values
-// If the values file if found it will be loaded and used for the values, otherwise the default is used.
-func OverlayValues(defaultValues string, valuesFile string) (string, error) {
-	finalValues := defaultValues
-	if valuesFile != "" {
-		fileBytes, err := os.ReadFile(valuesFile)
-		if err != nil && !os.IsNotExist(err) {
-			return finalValues, err
-		}
-		// TODO: Override / merge values together
-		finalValues = string(fileBytes)
-	}
-
-	return finalValues, nil
-}
+	"dario.cat/mergo"
+	"sigs.k8s.io/yaml"
+)
 
 // MustOverlayValues performs an OverlayValues call but ignores any errors that occur while reading the values file.
-func MustOverlayValues(defaultValues string, valuesFile string) string {
-	finalValues, _ := OverlayValues(defaultValues, valuesFile)
+func MustMergeValues(values ...string) string {
+	finalValues, _ := Merge(values...)
 	return finalValues
+}
+
+func Merge(layers ...string) (string, error) {
+	mergedLayers := map[string]interface{}{}
+
+	for _, layer := range layers {
+		if layer == "" {
+			continue
+		}
+
+		var rawMapData map[string]interface{}
+		err := yaml.Unmarshal([]byte(layer), &rawMapData)
+		if err != nil {
+			return "", err
+		}
+
+		err = mergo.Merge(&mergedLayers, rawMapData, mergo.WithOverride)
+		if err != nil {
+			return "", err
+		}
+	}
+
+	data, err := yaml.Marshal(mergedLayers)
+	if err != nil {
+		return "", err
+	}
+
+	return string(data), nil
+}
+
+// MustLoadValuesFile attempts to load a values file from the provided filePath and if fails returns an empty string
+func MustLoadValuesFile(filePath string) string {
+	fileBytes, err := os.ReadFile(filePath)
+	if err != nil {
+		return ""
+	}
+	return string(fileBytes)
 }

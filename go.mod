@@ -3,11 +3,13 @@ module github.com/giantswarm/cluster-standup-teardown
 go 1.21
 
 require (
+	dario.cat/mergo v1.0.0
 	github.com/giantswarm/apiextensions-application v0.6.1
 	github.com/giantswarm/clustertest v0.18.0
 	github.com/onsi/gomega v1.27.2
 	github.com/spf13/cobra v1.8.0
 	sigs.k8s.io/controller-runtime v0.14.5
+	sigs.k8s.io/yaml v1.4.0
 )
 
 require (
@@ -164,5 +166,4 @@ require (
 	sigs.k8s.io/kustomize/api v0.12.1 // indirect
 	sigs.k8s.io/kustomize/kyaml v0.13.9 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.3.0 // indirect
-	sigs.k8s.io/yaml v1.4.0 // indirect
 )
