@@ -58,6 +58,28 @@ func TestMerge(t *testing.T) {
   bar: baz
   extra: property`,
 		},
+		{
+			name: "Disable spot instances usecase",
+			inputValues: []string{
+				`global:
+  nodePools:
+    nodepool-0:
+      maxSize: 5
+      spotInstances:
+        enabled: true`,
+				`global:
+  nodePools:
+    nodepool-0:
+      spotInstances:
+        enabled: false`,
+			},
+			expected: `global:
+  nodePools:
+    nodepool-0:
+      maxSize: 5
+      spotInstances:
+        enabled: false`,
+		},
 	}
 
 	for _, tc := range tests {
