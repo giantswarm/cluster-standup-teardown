@@ -1,4 +1,4 @@
-package eks
+package capa
 
 import (
 	_ "embed"
@@ -11,17 +11,17 @@ import (
 )
 
 var (
-	//go:embed values/cluster_values.yaml
-	baseClusterValues string
-	//go:embed values/default-apps_values.yaml
-	baseDefaultAppsValues string
+	//go:embed values/managed-cluster_values.yaml
+	baseManagedClusterValues string
+	//go:embed values/managed-default-apps_values.yaml
+	baseManagedDefaultAppsValues string
 )
 
 // ClusterBuilder is the CAPA EKS ClusterBuilder
-type ClusterBuilder struct{}
+type ManagedClusterBuilder struct{}
 
 // NewClusterApp builds a new CAPA EKS cluster App
-func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesFile string, defaultAppsValuesFile string) *application.Cluster {
+func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesFile string, defaultAppsValuesFile string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -32,8 +32,8 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 	return application.NewClusterApp(clusterName, application.ProviderEKS).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
-			values.MustOverlayValues(baseClusterValues, clusterValuesFile),
-			values.MustOverlayValues(baseDefaultAppsValues, defaultAppsValuesFile),
+			values.MustOverlayValues(baseManagedClusterValues, clusterValuesFile),
+			values.MustOverlayValues(baseManagedDefaultAppsValues, defaultAppsValuesFile),
 			&application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,

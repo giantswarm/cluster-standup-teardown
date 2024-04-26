@@ -24,7 +24,6 @@ import (
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capv"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capvcd"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capz"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/eks"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/standup"
 )
 
@@ -125,7 +124,7 @@ func run(cmd *cobra.Command, args []string) error {
 		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 	case application.ProviderEKS:
-		clusterBuilder := eks.ClusterBuilder{}
+		clusterBuilder := capa.ManagedClusterBuilder{}
 		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValues, defaultAppValues).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 		// As EKS has no control plane we only check for worker nodes being ready
