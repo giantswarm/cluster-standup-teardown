@@ -32,7 +32,7 @@ var (
 	standupCmd = &cobra.Command{
 		Use:     "standup",
 		Long:    "Standup create a test workload cluster in a standard, reproducible way.\nA valid Management Cluster kubeconfig must be available and set to the `E2E_KUBECONFIG` environment variable.",
-		Example: "standup --provider aws --context capa --cluster-values ./cluster_values.yaml --default-apps-values ./default-apps_values.yaml",
+		Example: "standup --provider aws --context capa",
 		Args:    cobra.NoArgs,
 		RunE:    run,
 	}
