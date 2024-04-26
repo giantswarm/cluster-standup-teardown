@@ -3,10 +3,11 @@ package clusterbuilder
 import (
 	. "github.com/onsi/gomega"
 
-	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
 	"github.com/giantswarm/clustertest/pkg/logger"
+
+	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 )
 
 // ClusterBuilder is an interface that provides a function for building provider-specific Cluster apps
