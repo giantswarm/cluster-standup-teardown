@@ -53,3 +53,8 @@ func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string
 			templateValues,
 		)
 }
+
+// KubeContext returns the known KubeConfig context that this builder expects
+func (c *PrivateClusterBuilder) KubeContext() string {
+	return "capa-private-proxy"
+}

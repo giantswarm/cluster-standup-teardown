@@ -40,3 +40,8 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 			},
 		)
 }
+
+// KubeContext returns the known KubeConfig context that this builder expects
+func (c *ClusterBuilder) KubeContext() string {
+	return "capa"
+}

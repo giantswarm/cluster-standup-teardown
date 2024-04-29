@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Each ClusterBuilder now includes a function to say what KubeContext it expects / supports
+- Added a function to get a ClusterBuilder based on a given KubeContext
+
 ## [1.0.1] - 2024-04-26
 
 ### Changed
