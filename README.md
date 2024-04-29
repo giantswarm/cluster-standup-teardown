@@ -12,6 +12,72 @@ A helper module for use in Giant Swarm E2E test frameworks to handle the creatio
 go get github.com/giantswarm/cluster-standup-teardown
 ```
 
+### KubeConfig Requirements
+
+When using this module to standup a workload cluster it is expected that the `E2E_KUBECONFIG` environment variable is set and pointing to a valid kubeconfig with expected contexts defined.
+
+Each [ClusterBuilder](./pkg/clusterbuilder/) in this module has a specific KubeContext that it supports and that is expected to exist in the provided KubeConfig when running.
+
+Example kubeconfig:
+
+```yaml
+apiVersion: v1
+kind: Config
+contexts:
+- context:
+    cluster: glippy
+    user: glippy-admin
+  name: capz
+- context:
+    cluster: grizzly
+    user: grizzly-admin
+  name: capa
+- context:
+    cluster: gcapeverde
+    user: gcapeverde-admin
+  name: capv
+- context:
+    cluster: gerbil
+    user: gerbil-admin
+  name: capvcd
+clusters:
+- cluster:
+    certificate-authority-data: [REDACTED]
+    server: https://[REDACTED]:6443
+  name: glippy
+- cluster:
+    certificate-authority-data: [REDACTED]
+    server: https://[REDACTED]:6443
+  name: grizzly
+- cluster:
+    certificate-authority-data: [REDACTED]
+    server: https://[REDACTED]:6443
+  name: gcapeverde
+- cluster:
+    certificate-authority-data: [REDACTED]
+    server: https://[REDACTED]:6443
+  name: gerbil
+current-context: grizzly
+preferences: {}
+users:
+- name: glippy-admin
+  user:
+    client-certificate-data: [REDACTED]
+    client-key-data: [REDACTED]
+- name: grizzly-admin
+  user:
+    client-certificate-data: [REDACTED]
+    client-key-data: [REDACTED]
+- name: gcapeverde-admin
+  user:
+    client-certificate-data: [REDACTED]
+    client-key-data: [REDACTED]
+- name: gerbil-admin
+  user:
+    client-certificate-data: [REDACTED]
+    client-key-data: [REDACTED]
+```
+
 ## API Documentation
 
 Documentation can be found at: [pkg.go.dev/github.com/giantswarm/cluster-standup-teardown](https://pkg.go.dev/github.com/giantswarm/cluster-standup-teardown).

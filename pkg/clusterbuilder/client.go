@@ -1,18 +1,26 @@
 package clusterbuilder
 
 import (
+	"fmt"
+	"strings"
+
 	. "github.com/onsi/gomega"
 
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
 	"github.com/giantswarm/clustertest/pkg/logger"
 
+	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capv"
+	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capvcd"
+	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capz"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 )
 
 // ClusterBuilder is an interface that provides a function for building provider-specific Cluster apps
 type ClusterBuilder interface {
 	NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster
+	KubeContext() string
 }
 
 // LoadOrBuildCluster attempts to load a pre-built workload cluster if the appropriate env vars are set and if not will build a new Cluster
@@ -35,4 +43,22 @@ func LoadOrBuildCluster(framework *clustertest.Framework, clusterBuilder Cluster
 	logger.Log("Workload cluster name: %s", cluster.Name)
 
 	return cluster
+}
+
+// GetClusterBuilderForContext returns a suitable ClusterBuilder instance that supports the provided KubeContext
+func GetClusterBuilderForContext(context string) (ClusterBuilder, error) {
+	knownBuilders := []ClusterBuilder{
+		&capa.ClusterBuilder{}, &capa.ManagedClusterBuilder{}, &capa.PrivateClusterBuilder{},
+		&capv.ClusterBuilder{},
+		&capvcd.ClusterBuilder{},
+		&capz.ClusterBuilder{},
+	}
+
+	for _, builder := range knownBuilders {
+		if strings.EqualFold(builder.KubeContext(), strings.ToLower(context)) {
+			return builder, nil
+		}
+	}
+
+	return nil, fmt.Errorf("unable to find matching ClusterBuilder")
 }
