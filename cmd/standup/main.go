@@ -20,10 +20,7 @@ import (
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 
 	"github.com/giantswarm/cluster-standup-teardown/cmd/standup/types"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capa"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capv"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capvcd"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capz"
+	cb "github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/standup"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 )
@@ -108,51 +105,34 @@ func run(cmd *cobra.Command, args []string) error {
 	clusterName := utils.GenerateRandomName("t")
 	orgName := utils.GenerateRandomName("t")
 
-	fmt.Printf("Standing up cluster...\n\nProvider:\t\t%s\nCluster Name:\t\t%s\nOrg Name:\t\t%s\nResults Directory:\t%s\n\n", provider, clusterName, orgName, outputDirectory)
-
 	clusterValuesOverrides := []string{values.MustLoadValuesFile(clusterValues)}
 	defaultAppValuesOverrides := []string{values.MustLoadValuesFile(defaultAppValues)}
 
 	var cluster *application.Cluster
-	switch provider {
-	case application.ProviderVSphere:
-		clusterBuilder := capv.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
-			WithAppVersions(clusterVersion, defaultAppVersion)
-	case application.ProviderCloudDirector:
-		clusterBuilder := capvcd.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
-			WithAppVersions(clusterVersion, defaultAppVersion)
-	case application.ProviderAWS:
-		clusterBuilder := capa.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
-			WithAppVersions(clusterVersion, defaultAppVersion)
-	case application.ProviderEKS:
-		clusterBuilder := capa.ManagedClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
-			WithAppVersions(clusterVersion, defaultAppVersion)
-		// As EKS has no control plane we only check for worker nodes being ready
-		clusterReadyFns = []func(wcClient *client.Client){
-			func(wcClient *client.Client) {
-				_ = wait.For(
-					wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, &cr.MatchingLabels{"node-role.kubernetes.io/worker": ""}),
-					wait.WithTimeout(20*time.Minute),
-					wait.WithInterval(15*time.Second),
-				)
-			},
-		}
-	case application.ProviderAzure:
-		clusterBuilder := capz.ClusterBuilder{}
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
-			WithAppVersions(clusterVersion, defaultAppVersion)
-	default:
+	clusterBuilder, err := cb.GetClusterBuilderForContext(kubeContext)
+	if err != nil {
+		fmt.Printf("Failed to automatically get cluster builder based on context, falling back to building out a cluster...\n")
 		cluster = application.NewClusterApp(clusterName, provider).
-			WithAppVersions(clusterVersion, defaultAppVersion).
-			WithOrg(organization.New(orgName)).
+			WithAppVersions(clusterVersion, defaultAppVersion).WithOrg(organization.New(orgName)).
 			WithAppValuesFile(path.Clean(clusterValues), path.Clean(defaultAppValues), &application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,
 			})
+	} else {
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
+			WithAppVersions(clusterVersion, defaultAppVersion)
+	}
+
+	if provider == application.ProviderEKS {
+		// As EKS has no control plane we only check for worker nodes being ready
+		clusterReadyFns = []func(wcClient *client.Client){func(wcClient *client.Client) {
+			_ = wait.For(
+				wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, &cr.MatchingLabels{"node-role.kubernetes.io/worker": ""}),
+				wait.WithTimeout(20*time.Minute),
+				wait.WithInterval(15*time.Second),
+			)
+		},
+		}
 	}
 
 	// Create the results file with the details we have already incase the cluster creation fails
@@ -180,6 +160,8 @@ func run(cmd *cobra.Command, args []string) error {
 	}
 
 	resultsFile.Close()
+
+	fmt.Printf("Standing up cluster...\n\nProvider:\t\t%s\nCluster Name:\t\t%s\nOrg Name:\t\t%s\nResults Directory:\t%s\n\n", provider, clusterName, orgName, outputDirectory)
 
 	cluster, err = standup.New(framework, false, clusterReadyFns...).Standup(cluster)
 	if err != nil {
