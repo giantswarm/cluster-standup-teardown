@@ -24,7 +24,9 @@ var (
 )
 
 // ClusterBuilder is the CAPVCD ClusterBuilder
-type ClusterBuilder struct{}
+type ClusterBuilder struct {
+	CustomKubeContext string
+}
 
 // NewClusterApp builds a new CAPVCD cluster App
 func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
@@ -57,5 +59,8 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 
 // KubeContext returns the known KubeConfig context that this builder expects
 func (c *ClusterBuilder) KubeContext() string {
+	if c.CustomKubeContext != "" {
+		return c.CustomKubeContext
+	}
 	return "capvcd"
 }

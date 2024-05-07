@@ -20,7 +20,9 @@ var (
 )
 
 // PrivateClusterBuilder is the private CAPA ClusterBuilder
-type PrivateClusterBuilder struct{}
+type PrivateClusterBuilder struct {
+	CustomKubeContext string
+}
 
 // NewClusterApp builds a new private CAPA cluster App
 func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
@@ -56,5 +58,8 @@ func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string
 
 // KubeContext returns the known KubeConfig context that this builder expects
 func (c *PrivateClusterBuilder) KubeContext() string {
+	if c.CustomKubeContext != "" {
+		return c.CustomKubeContext
+	}
 	return "capa-private-proxy"
 }
