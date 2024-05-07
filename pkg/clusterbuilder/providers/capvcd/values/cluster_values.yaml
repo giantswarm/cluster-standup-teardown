@@ -1,4 +1,3 @@
-baseDomain: test.gigantic.io
 controlPlane:
   replicas: 3
   diskSizeGB: 30
@@ -8,15 +7,6 @@ controlPlane:
     groupsClaim: "groups"
     issuerUrl: "https://dex.gerbil.test.gigantic.io"
     usernameClaim: "email"
-connectivity:
-  network:
-    loadBalancers:
-      vipSubnet: "10.205.9.254/24"
-  ntp:
-    servers:
-      - "10.205.105.253"
-  proxy:
-    enabled: true
 nodePools:
   worker:
     class: default
@@ -36,3 +26,14 @@ providerSpecific:
 metadata:
   description: "E2E Test cluster"
   organization: "{{ .Organization }}"
+global:
+  connectivity:
+    network:
+      loadBalancers:
+        vipSubnet: "10.205.9.254/24"
+    ntp:
+      servers:
+        - "10.205.105.253"
+    proxy:
+      enabled: true
+    baseDomain: test.gigantic.io
