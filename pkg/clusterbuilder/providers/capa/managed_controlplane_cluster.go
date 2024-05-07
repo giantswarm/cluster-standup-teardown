@@ -17,8 +17,10 @@ var (
 	baseManagedDefaultAppsValues string
 )
 
-// ClusterBuilder is the CAPA EKS ClusterBuilder
-type ManagedClusterBuilder struct{}
+// ManagedClusterBuilder is the CAPA EKS ClusterBuilder
+type ManagedClusterBuilder struct {
+	CustomKubeContext string
+}
 
 // NewClusterApp builds a new CAPA EKS cluster App
 func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
@@ -43,5 +45,8 @@ func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string
 
 // KubeContext returns the known KubeConfig context that this builder expects
 func (c *ManagedClusterBuilder) KubeContext() string {
+	if c.CustomKubeContext != "" {
+		return c.CustomKubeContext
+	}
 	return "eks"
 }
