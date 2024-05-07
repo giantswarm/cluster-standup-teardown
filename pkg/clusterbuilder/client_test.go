@@ -1,6 +1,7 @@
 package clusterbuilder
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capa"
@@ -70,7 +71,7 @@ func Test_GetClusterBuilderForContext(t *testing.T) {
 				t.Fatalf("unexpected error: %v", err)
 			}
 
-			if cb != tc.expected {
+			if !reflect.DeepEqual(cb, tc.expected) {
 				t.Fatalf("Actual value didn't match expected value\n\nexpected: %q\n\nactual: %q", tc.expected, cb)
 			}
 		})
