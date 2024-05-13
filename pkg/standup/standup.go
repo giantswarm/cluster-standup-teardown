@@ -8,12 +8,13 @@ import (
 
 	. "github.com/onsi/gomega"
 
+	cr "sigs.k8s.io/controller-runtime/pkg/client"
+
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
 	clustertestclient "github.com/giantswarm/clustertest/pkg/client"
 	"github.com/giantswarm/clustertest/pkg/logger"
 	"github.com/giantswarm/clustertest/pkg/wait"
-	cr "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
 // Client is the client responsible for handling standing up a given cluster
@@ -57,6 +58,12 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 	ctx := context.Background()
 	applyCtx, cancelApplyCtx := context.WithTimeout(ctx, 20*time.Minute)
 	defer cancelApplyCtx()
+
+	skipsDefaultApps, err := cluster.UsesUnifiedClusterApp()
+	Expect(err).NotTo(HaveOccurred())
+	if skipsDefaultApps {
+		logger.Log("Deploying only unified %s app (with default apps) and skipping %s app.", cluster.ClusterApp.AppName, cluster.DefaultAppsApp.AppName)
+	}
 
 	client, err := c.Framework.ApplyCluster(applyCtx, cluster)
 	Expect(err).NotTo(HaveOccurred())
