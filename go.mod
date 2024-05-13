@@ -5,7 +5,7 @@ go 1.21
 require (
 	dario.cat/mergo v1.0.0
 	github.com/giantswarm/apiextensions-application v0.6.1
-	github.com/giantswarm/clustertest v0.20.0
+	github.com/giantswarm/clustertest v0.20.1
 	github.com/onsi/gomega v1.33.1
 	github.com/spf13/cobra v1.8.0
 	sigs.k8s.io/controller-runtime v0.14.5
@@ -66,7 +66,7 @@ require (
 	github.com/google/btree v1.1.2 // indirect
 	github.com/google/gnostic v0.6.9 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
-	github.com/google/go-github/v61 v61.0.0 // indirect
+	github.com/google/go-github/v62 v62.0.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
