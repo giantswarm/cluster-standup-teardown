@@ -137,6 +137,10 @@ standup --provider aws --context capa
 
 Cleans up a workload cluster previously created by `standup`. Makes use of the `kubeconfig` and `results.json` produced by `standup`.
 
+#### Preventing cluster deletion
+
+It is possible to prevent cluster deletion during the teardown stage by setting the `E2E_WC_KEEP` environment variable to anything other than `false`. If this env var is found the teardown function will not actually perform any actions against the cluster and will instead just log out to the logger that deletion has been skipped and the user must then maunally clean up the resources in the MC.
+
 #### Install
 
 ```shell

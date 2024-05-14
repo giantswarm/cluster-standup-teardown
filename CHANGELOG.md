@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Reduce prom volume size in test clusters
 
+### Added
+
+- Added support for the `E2E_WC_KEEP` environment variable that prevent cluster deletion during the teardown phase
+
 ## [1.1.0] - 2024-05-12
 
 ### Changed
