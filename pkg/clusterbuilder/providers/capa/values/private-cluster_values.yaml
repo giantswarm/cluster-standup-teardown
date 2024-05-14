@@ -59,3 +59,18 @@ global:
         enabled: true
         maxPrice: 0.2960
 
+  apps:
+    certManager:
+      values:
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: "{{ .ClusterName }}-CertManager-Role"
+        giantSwarmClusterIssuer:
+          acme:
+            http01:
+              enabled: false
+            dns01:
+              route53:
+                enabled: true
+                # TODO Use a variable as soon as it is available.
+                region: "eu-north-1"

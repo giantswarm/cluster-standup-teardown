@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Reduce prom volume size in test clusters
 
+### Added
+
+- Add support for unified cluster-aws app.
+
 ## [1.1.0] - 2024-05-12
 
 ### Changed
