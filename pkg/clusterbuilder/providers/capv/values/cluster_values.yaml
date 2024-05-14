@@ -3,6 +3,11 @@ organization: "{{ .Organization }}"
 
 baseDomain: test.gigantic.io
 
+global:
+  metadata:
+    labels:
+      monitoring.giantswarm.io/prometheus-volume-size: small
+
 controlPlane:
   replicas: 1
   image:
