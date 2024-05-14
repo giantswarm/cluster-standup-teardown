@@ -10,7 +10,7 @@ import (
 	"github.com/giantswarm/clustertest/pkg/logger"
 )
 
-const keepWCEnvVar = "E2E_WC_KEEP"
+const keepWCEnvVar = "E2E_WC_KEEP" //nolint:gosec
 
 // Client is the client responsible for handling cluster teardown
 type Client struct {
