@@ -1,48 +1,43 @@
-clusterDescription: "E2E Test cluster"
-organization: "{{ .Organization }}"
-
-baseDomain: test.gigantic.io
-
 global:
   metadata:
+    description: "E2E Test cluster"
+    organization: "{{ .Organization }}"
     labels:
       monitoring.giantswarm.io/prometheus-volume-size: small
-
-controlPlane:
-  replicas: 1
-  image:
-    repository: registry.k8s.io
-  machineTemplate:
-    cloneMode: "linkedClone"
-    diskGiB: 50
-    numCPUs: 4
-    memoryMiB: 8096
-    resourcePool: "grasshopper"
+  connectivity:
     network:
-      devices:
-      - networkName: 'grasshopper-capv'
-        dhcp4: true
-
-connectivity:
-  network:
-    controlPlaneEndpoint:
-      ipPoolName: "wc-cp-ips"  # [string] Ip for control plane will be drawn from this GlobalInClusterIPPool (for gcapeverde it's 10.10.222.232 - 10.10.222.238 inclusive)
-    loadBalancers:
-      ipPoolName: "svc-lb-ips" # [string] Ip for control plane will be drawn from this GlobalInClusterIPPool (for gcapeverde it's 10.10.222.245 - 10.10.222.249 inclusive)
-
-nodeClasses:
-  default:
-    cloneMode: "linkedClone"
-    diskGiB: 50
-    numCPUs: 6
-    memoryMiB: 16896
-    resourcePool: "grasshopper"
-    network:
-      devices:
-      - networkName: 'grasshopper-capv'
-        dhcp4: true
-
-nodePools:
-  worker:
-    class: "default"
-    replicas: 2
+      controlPlaneEndpoint:
+        ipPoolName: "wc-cp-ips" # [string] Ip for control plane will be drawn from this GlobalInClusterIPPool (for gcapeverde it's 10.10.222.232 - 10.10.222.238 inclusive)
+      loadBalancers:
+        ipPoolName: "svc-lb-ips" # [string] Ip for control plane will be drawn from this GlobalInClusterIPPool (for gcapeverde it's 10.10.222.245 - 10.10.222.249 inclusive)
+    baseDomain: test.gigantic.io
+  controlPlane:
+    replicas: 1
+    image:
+      repository: registry.k8s.io
+    machineTemplate:
+      cloneMode: "linkedClone"
+      diskGiB: 50
+      numCPUs: 4
+      memoryMiB: 8196
+      resourcePool: "grasshopper"
+      network:
+        devices:
+          - networkName: 'grasshopper-capv'
+            dhcp4: true
+    resourceRatio: 8
+  nodePools:
+    worker:
+      class: "default"
+      replicas: 2
+  nodeClasses:
+    default:
+      cloneMode: "linkedClone"
+      diskGiB: 50
+      numCPUs: 6
+      memoryMiB: 16896
+      resourcePool: "grasshopper"
+      network:
+        devices:
+          - networkName: 'grasshopper-capv'
+            dhcp4: true
