@@ -3,8 +3,6 @@ global:
     name: "{{ .ClusterName }}"
     description: "E2E Test cluster"
     organization: "{{ .Organization }}"
-    labels:
-      monitoring.giantswarm.io/prometheus-volume-size: small
   providerSpecific:
     location: "westeurope"
     subscriptionId: 6b1f6e4a-6d0e-4aa4-9a5a-fbaca65a23b3

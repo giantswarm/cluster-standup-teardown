@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- If relevant env vars are found populate the Cluster values with labels containing the Tekton run names
+
+### Changed
+
+- Added a `values.BuildBaseValues` function to handle generic cluster values that are specific to test environments and apply over all providers. The prometheus volume size label has been moved into this function.
+
 ## [1.3.0] - 2024-05-16
 
 ### Changed

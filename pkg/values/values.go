@@ -9,7 +9,7 @@ import (
 
 // MustOverlayValues performs an OverlayValues call but ignores any errors that occur while reading the values file.
 func MustMergeValues(values ...string) string {
-	finalValues, _ := Merge(values...)
+	finalValues, _ := Merge(append([]string{BuildBaseValues()}, values...)...)
 	return finalValues
 }
 
