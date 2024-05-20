@@ -7,15 +7,15 @@ import (
 )
 
 type baseValues struct {
-	Global global `json:"global",yaml:"global"`
+	Global global `json:"global" yaml:"global"`
 }
 
 type global struct {
-	Metadata metadata `json:"metadata",yaml:"metadata"`
+	Metadata metadata `json:"metadata" yaml:"metadata"`
 }
 
 type metadata struct {
-	Labels map[string]string `json:"labels",yaml:"labels"`
+	Labels map[string]string `json:"labels" yaml:"labels"`
 }
 
 // BuildBaseValues generates a base set of cluster values that are relevant for all test clusters
