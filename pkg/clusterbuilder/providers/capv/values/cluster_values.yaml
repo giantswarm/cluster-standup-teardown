@@ -2,8 +2,6 @@ global:
   metadata:
     description: "E2E Test cluster"
     organization: "{{ .Organization }}"
-    labels:
-      monitoring.giantswarm.io/prometheus-volume-size: small
   connectivity:
     network:
       controlPlaneEndpoint:
