@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update `cluster-cloud-director` values for refactored chart.
+
 ## [1.4.0] - 2024-05-20
 
 ### Added
