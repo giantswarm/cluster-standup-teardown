@@ -4,8 +4,6 @@ go 1.22.3
 
 toolchain go1.22.4
 
-replace github.com/giantswarm/clustertest => /Users/marcus/Code/GiantSwarm/clustertest
-
 require (
 	dario.cat/mergo v1.0.0
 	github.com/giantswarm/apiextensions-application v0.6.1
