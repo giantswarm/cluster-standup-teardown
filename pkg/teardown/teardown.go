@@ -32,7 +32,7 @@ func (c *Client) Teardown(cluster *application.Cluster) error {
 	if keep != "" && keep != "false" {
 		logger.Log("⚠️ The %s env var is set, skipping deletion of workload cluster", keepWCEnvVar)
 		logger.Log("⚠️ This means the Cluster '%s' will remain on the management cluster only until the cluster-cleaner decides to remove it later. To disable the cluster-cleaner behavior please manually add the 'alpha.giantswarm.io/ignore-cluster-deletion' annotation to your test cluster.", cluster.Name)
-		logger.Log("⚠️ Please be sure to manually delete the '%s' Organisation when you are finished.", cluster.Organization.Name)
+		logger.Log("⚠️ Please be sure to manually delete the '%s' Organisation and any associated Releases when you are finished.", cluster.Organization.Name)
 
 		return nil
 	}
