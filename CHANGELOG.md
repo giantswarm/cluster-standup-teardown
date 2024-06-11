@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2024-06-10
+
+### Changed
+
+- Update `clustertest` to v1.0.0 to support Releases with cluster Apps
+
+## [1.5.0] - 2024-06-07
+
+### Changed
+
+- Update `cluster-cloud-director` values for refactored chart.
+
 ## [1.4.0] - 2024-05-20
 
 ### Added
@@ -70,7 +82,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.5.0...v1.6.0
+[1.5.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.1.0...v1.2.0

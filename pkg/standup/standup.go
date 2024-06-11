@@ -40,6 +40,7 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 		cluster = cluster.WithAppVersions("latest", "latest")
 	}
 	logger.Log("Workload cluster name: %s", cluster.Name)
+	logger.Log("Organisation name: %s", cluster.Organization.Name)
 
 	// In certain cases, when connecting over the VPN, it is possible that the tunnel
 	// isn't ready and can take a short while to become usable. This attempts to wait
