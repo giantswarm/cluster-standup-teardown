@@ -10,6 +10,11 @@ import (
 	"github.com/giantswarm/clustertest/pkg/utils"
 )
 
+var (
+	//go:embed values/china-cluster_values.yaml
+	baseChinaClusterValues string
+)
+
 // ChinaBuilder is the CAPA ChinaBuilder
 type ChinaBuilder struct {
 	CustomKubeContext string
@@ -27,7 +32,7 @@ func (c *ChinaBuilder) NewClusterApp(clusterName string, orgName string, cluster
 	return application.NewClusterApp(clusterName, application.ProviderAWS).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
-			values.MustMergeValues(append([]string{baseClusterValues}, clusterValuesOverrides...)...),
+			values.MustMergeValues(append([]string{baseChinaClusterValues}, clusterValuesOverrides...)...),
 			values.MustMergeValues(append([]string{baseDefaultAppsValues}, defaultAppsValuesOverrides...)...),
 			&application.TemplateValues{
 				ClusterName:  clusterName,
