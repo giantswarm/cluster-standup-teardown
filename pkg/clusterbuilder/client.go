@@ -40,7 +40,6 @@ func LoadOrBuildCluster(framework *clustertest.Framework, clusterBuilder Cluster
 		[]string{values.MustLoadValuesFile("./test_data/cluster_values.yaml")},
 		[]string{values.MustLoadValuesFile("./test_data/default-apps_values.yaml")},
 	)
-	logger.Log("Workload cluster name: %s", cluster.Name)
 
 	return cluster
 }
