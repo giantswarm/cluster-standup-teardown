@@ -23,3 +23,10 @@ global:
       maxSize: 3
       minSize: 2
       rootVolumeSizeGB: 25
+
+  apps:
+    clusterAutoscaler:
+      values:
+        configmap:
+          # Prevent cluster-autoscaler from trying to scale down while we're in the middle of our scaling test
+          scaleDownUnneededTime: 15m0s

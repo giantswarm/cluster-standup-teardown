@@ -72,3 +72,8 @@ global:
                 enabled: true
                 # TODO Use a variable as soon as it is available.
                 region: "eu-north-1"
+    clusterAutoscaler:
+      values:
+        configmap:
+          # Prevent cluster-autoscaler from trying to scale down while we're in the middle of our scaling test
+          scaleDownUnneededTime: 15m0s
