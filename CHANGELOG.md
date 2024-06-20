@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.1] - 2024-06-13
+
 ### Fixed
 
 - Upgraded `clustertest` to latest v1.1.0
@@ -96,7 +98,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.7.1...HEAD
+[1.7.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.4.0...v1.5.0
