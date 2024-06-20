@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Added `scaleDownUnneededTime` of 15m to `cluster-autoscaler` config for CAPA clusters to help avoid scale-down occurring during our scaling tests.
+- Updated `clustertest` to latest with additional logging
 
 ## [1.7.1] - 2024-06-13
 

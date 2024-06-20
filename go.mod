@@ -7,7 +7,7 @@ toolchain go1.22.4
 require (
 	dario.cat/mergo v1.0.0
 	github.com/giantswarm/apiextensions-application v0.6.1
-	github.com/giantswarm/clustertest v1.3.0
+	github.com/giantswarm/clustertest v1.3.1
 	github.com/onsi/gomega v1.33.1
 	github.com/spf13/cobra v1.8.1
 	sigs.k8s.io/controller-runtime v0.14.7
