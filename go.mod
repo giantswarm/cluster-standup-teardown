@@ -4,10 +4,12 @@ go 1.22.3
 
 toolchain go1.22.4
 
+replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.16
+
 require (
 	dario.cat/mergo v1.0.0
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest v1.4.0
+	github.com/giantswarm/clustertest v1.6.0
 	github.com/onsi/gomega v1.33.1
 	github.com/spf13/cobra v1.8.1
 	sigs.k8s.io/controller-runtime v0.18.4
@@ -27,6 +29,7 @@ require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
+	github.com/cert-manager/cert-manager v1.15.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/chai2010/gettext-go v1.0.3 // indirect
 	github.com/containerd/containerd v1.7.18 // indirect
@@ -82,7 +85,7 @@ require (
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
-	github.com/imdario/mergo v0.3.16 // indirect
+	github.com/imdario/mergo v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jmoiron/sqlx v1.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
@@ -145,7 +148,7 @@ require (
 	golang.org/x/text v0.16.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240617180043-68d350f18fd4 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240624140628-dc46fd24d27d // indirect
 	google.golang.org/grpc v1.64.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/evanphx/json-patch.v4 v4.12.0 // indirect
@@ -168,6 +171,7 @@ require (
 	oras.land/oras-go v1.2.5 // indirect
 	sigs.k8s.io/cluster-api v1.7.3 // indirect
 	sigs.k8s.io/e2e-framework v0.4.0 // indirect
+	sigs.k8s.io/gateway-api v1.1.0 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/kustomize/api v0.17.2 // indirect
 	sigs.k8s.io/kustomize/kyaml v0.17.1 // indirect
