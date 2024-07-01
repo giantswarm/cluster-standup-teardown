@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated clustertest to v1.10.0 and changed the `IsUpgrade` support in Standup to handle setting the Release version used by the cluster before upgrade.
+
 ## [1.10.0] - 2024-06-25
 
 ### Changed

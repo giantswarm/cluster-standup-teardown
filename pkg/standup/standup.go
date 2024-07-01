@@ -11,6 +11,7 @@ import (
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
 	clustertestclient "github.com/giantswarm/clustertest/pkg/client"
+	"github.com/giantswarm/clustertest/pkg/env"
 	"github.com/giantswarm/clustertest/pkg/logger"
 	"github.com/giantswarm/clustertest/pkg/wait"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
@@ -36,8 +37,19 @@ func New(framework *clustertest.Framework, isUpgrade bool, clusterReadyChecks ..
 // After applying it checks for the cluster being ready and usable.
 func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, error) {
 	if c.IsUpgade {
-		Expect(strings.TrimSpace(os.Getenv("E2E_OVERRIDE_VERSIONS"))).ToNot(BeEmpty())
-		cluster = cluster.WithAppVersions("latest", "latest")
+		Expect(strings.TrimSpace(os.Getenv(env.OverrideVersions))).ToNot(BeEmpty())
+
+		releaseVersion := application.ReleaseLatest
+		if os.Getenv(env.ReleasePreUpgradeVersion) != "" {
+			releaseVersion = os.Getenv(env.ReleasePreUpgradeVersion)
+		}
+
+		cluster = cluster.
+			WithAppVersions("latest", "latest").
+			WithRelease(application.ReleasePair{
+				Version: releaseVersion,
+				Commit:  "",
+			})
 	}
 	logger.Log("Workload cluster name: %s", cluster.Name)
 	logger.Log("Organisation name: %s", cluster.Organization.Name)
