@@ -9,7 +9,7 @@ replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.16
 require (
 	dario.cat/mergo v1.0.0
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest v1.11.0
+	github.com/giantswarm/clustertest v1.11.1
 	github.com/onsi/gomega v1.33.1
 	github.com/spf13/cobra v1.8.1
 	sigs.k8s.io/controller-runtime v0.18.4
