@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.0] - 2024-07-04
+
 ### Fixed
 
 - Use `E2E_WC_KEEP` from `clustertest` and added a small note when using `E2E_WC_NAME` but not `E2E_WC_KEEP`.
@@ -123,7 +125,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.11.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.12.0...HEAD
+[1.12.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.8.0...v1.9.0
