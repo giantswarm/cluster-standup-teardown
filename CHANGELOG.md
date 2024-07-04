@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Use `E2E_WC_KEEP` from `clustertest` and added a small note when using `E2E_WC_NAME` but not `E2E_WC_KEEP`.
+
 ## [1.11.0] - 2024-07-02
 
 ### Changed
