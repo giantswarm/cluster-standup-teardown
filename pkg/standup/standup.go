@@ -3,7 +3,6 @@ package standup
 import (
 	"context"
 	"os"
-	"strings"
 	"time"
 
 	. "github.com/onsi/gomega"
@@ -13,6 +12,7 @@ import (
 	clustertestclient "github.com/giantswarm/clustertest/pkg/client"
 	"github.com/giantswarm/clustertest/pkg/env"
 	"github.com/giantswarm/clustertest/pkg/logger"
+	"github.com/giantswarm/clustertest/pkg/utils"
 	"github.com/giantswarm/clustertest/pkg/wait"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -37,7 +37,7 @@ func New(framework *clustertest.Framework, isUpgrade bool, clusterReadyChecks ..
 // After applying it checks for the cluster being ready and usable.
 func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, error) {
 	if c.IsUpgade {
-		Expect(strings.TrimSpace(os.Getenv(env.OverrideVersions))).ToNot(BeEmpty())
+		Expect(utils.ShouldSkipUpgrade()).To(BeFalse())
 
 		releaseVersion := application.ReleaseLatest
 		if os.Getenv(env.ReleasePreUpgradeVersion) != "" {

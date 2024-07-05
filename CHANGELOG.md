@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Use `ShouldSkipUpgrade()` to check if upgrade is valid or not
+
 ## [1.12.0] - 2024-07-04
 
 ### Fixed
