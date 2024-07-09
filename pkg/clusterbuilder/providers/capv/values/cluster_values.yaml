@@ -26,10 +26,7 @@ global:
     resourceRatio: 8
   nodePools:
     worker:
-      class: "default"
       replicas: 2
-  nodeClasses:
-    default:
       cloneMode: "linkedClone"
       diskGiB: 50
       numCPUs: 6

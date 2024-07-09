@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated `capv` cluster values following removal of nodeClasses.
+
 ## [1.12.1] - 2024-07-05
 
 ### Fixed
