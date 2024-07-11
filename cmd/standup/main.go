@@ -38,6 +38,8 @@ var (
 	kubeContext       string
 	clusterValues     string
 	defaultAppValues  string
+	releaseVersion    string
+	releaseCommit     string
 	clusterVersion    string
 	defaultAppVersion string
 	outputDirectory   string
@@ -73,6 +75,9 @@ func init() {
 	standupCmd.Flags().IntVar(&controlPlaneNodes, "control-plane-nodes", 1, "The number of control plane nodes to wait for being ready")
 	standupCmd.Flags().IntVar(&workerNodes, "worker-nodes", 1, "The number of worker nodes to wait for being ready")
 	standupCmd.Flags().StringVar(&outputDirectory, "output", "./", "The directory to store the results.json and kubeconfig in")
+
+	standupCmd.Flags().StringVar(&releaseVersion, "release", application.ReleaseLatest, "The version of the Release to use")
+	standupCmd.Flags().StringVar(&releaseCommit, "release-commit", "", "The git commit to get the Release version from (defaults to main default if unset)")
 	standupCmd.Flags().StringVar(&clusterVersion, "cluster-version", "latest", "The version of the cluster app to install")
 	standupCmd.Flags().StringVar(&defaultAppVersion, "default-apps-version", "latest", "The version of the default-apps app to install")
 
@@ -113,6 +118,10 @@ func run(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		fmt.Printf("Failed to automatically get cluster builder based on context, falling back to building out a cluster...\n")
 		cluster = application.NewClusterApp(clusterName, provider).
+			WithRelease(application.ReleasePair{
+				Version: releaseVersion,
+				Commit:  releaseCommit,
+			}).
 			WithAppVersions(clusterVersion, defaultAppVersion).WithOrg(organization.New(orgName)).
 			WithAppValuesFile(path.Clean(clusterValues), path.Clean(defaultAppValues), &application.TemplateValues{
 				ClusterName:  clusterName,
@@ -120,6 +129,10 @@ func run(cmd *cobra.Command, args []string) error {
 			})
 	} else {
 		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
+			WithRelease(application.ReleasePair{
+				Version: releaseVersion,
+				Commit:  releaseCommit,
+			}).
 			WithAppVersions(clusterVersion, defaultAppVersion)
 	}
 

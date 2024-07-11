@@ -115,6 +115,8 @@ standup --provider aws --context capa
 
 Flags:
       --cluster-values string         The path to the cluster app values
+      --release string                The version of Release to use to create the cluster (default "latest")
+      --release-commit string         The git commit to get the Release from (defaults to repo default branch)
       --cluster-version string        The version of the cluster app to install (default "latest")
       --context string                The kubernetes context to use (required)
       --control-plane-nodes int       The number of control plane nodes to wait for being ready (default 1)
