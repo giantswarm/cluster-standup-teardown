@@ -1,6 +1,7 @@
 global:
   metadata:
     description: "E2E Test cluster"
+    name: "{{ .ClusterName }}"
     organization: "{{ .Organization }}"
   connectivity:
     network:
