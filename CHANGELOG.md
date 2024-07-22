@@ -7,15 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.16.0] - 2024-07-22
+
+### Added
+
+- Added a new `--wait-for-apps-ready` flag to the standup CLI that will wait until all default apps are installed
+
 ## [1.15.0] - 2024-07-22
 
 ### Changed
 
 - Update CAPV values with `name` value
-
-### Added
-
-- Added a new `--wait-for-apps-ready` flag to the standup CLI that will wait until all default apps are installed
 
 ## [1.14.0] - 2024-07-11
 
@@ -153,7 +155,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.15.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.16.0...HEAD
+[1.16.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.15.0...v1.16.0
 [1.15.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.14.0...v1.15.0
 [1.14.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.12.1...v1.13.0
