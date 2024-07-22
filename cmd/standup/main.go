@@ -10,6 +10,7 @@ import (
 
 	. "github.com/onsi/gomega"
 
+	"github.com/giantswarm/apiextensions-application/api/v1alpha1"
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
 	"github.com/giantswarm/clustertest/pkg/client"
@@ -17,6 +18,7 @@ import (
 	"github.com/giantswarm/clustertest/pkg/utils"
 	"github.com/giantswarm/clustertest/pkg/wait"
 	"github.com/spf13/cobra"
+	apitypes "k8s.io/apimachinery/pkg/types"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 
 	"github.com/giantswarm/cluster-standup-teardown/cmd/standup/types"
@@ -46,6 +48,8 @@ var (
 
 	controlPlaneNodes int
 	workerNodes       int
+
+	waitForApps bool
 
 	// Functions to run after cluster creation to confirm it is up and ready to use
 	clusterReadyFns []func(wcClient *client.Client) = []func(wcClient *client.Client){
@@ -80,6 +84,8 @@ func init() {
 	standupCmd.Flags().StringVar(&releaseCommit, "release-commit", "", "The git commit to get the Release version from (defaults to main default if unset)")
 	standupCmd.Flags().StringVar(&clusterVersion, "cluster-version", "latest", "The version of the cluster app to install")
 	standupCmd.Flags().StringVar(&defaultAppVersion, "default-apps-version", "latest", "The version of the default-apps app to install")
+
+	standupCmd.Flags().BoolVar(&waitForApps, "wait-for-apps-ready", false, "Wait until all default apps are installed")
 
 	_ = standupCmd.MarkFlagRequired("provider")
 	_ = standupCmd.MarkFlagRequired("context")
@@ -146,6 +152,28 @@ func run(cmd *cobra.Command, args []string) error {
 			)
 		},
 		}
+	}
+
+	if waitForApps {
+		clusterReadyFns = append(clusterReadyFns, func(wcClient *client.Client) {
+			fmt.Printf("Waiting for all Apps to be ready...\n")
+			_ = wait.For(func() (bool, error) {
+				appList := &v1alpha1.AppList{}
+				err := framework.MC().List(context.Background(), appList, cr.InNamespace(cluster.GetNamespace()), cr.MatchingLabels{"giantswarm.io/cluster": cluster.Name})
+				if err != nil {
+					return false, err
+				}
+
+				appNamespacedNames := []apitypes.NamespacedName{}
+				for _, app := range appList.Items {
+					appNamespacedNames = append(appNamespacedNames, apitypes.NamespacedName{Name: app.Name, Namespace: app.Namespace})
+				}
+
+				return wait.IsAllAppDeployed(context.Background(), framework.MC(), appNamespacedNames)()
+			},
+				wait.WithTimeout(20*time.Minute),
+				wait.WithInterval(15*time.Second))
+		})
 	}
 
 	// Create the results file with the details we have already incase the cluster creation fails
