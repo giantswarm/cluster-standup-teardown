@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update CAPV values with `name` value
+
 ## [1.14.0] - 2024-07-11
 
 ### Added
