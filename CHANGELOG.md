@@ -7,15 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added a new `--wait-for-apps-ready` flag to the standup CLI that will wait until all default apps are installed
+
 ## [1.15.0] - 2024-07-22
 
 ### Changed
 
 - Update CAPV values with `name` value
-
-### Added
-
-- Added a new `--wait-for-apps-ready` flag to the standup CLI that will wait until all default apps are installed
 
 ## [1.14.0] - 2024-07-11
 
