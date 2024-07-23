@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped clustertest to 0.16.0 with Releases support for CAPZ
+
 ## [1.16.0] - 2024-07-22
 
 ### Added
