@@ -37,9 +37,8 @@ global:
     vpcMode: private
 
   controlPlane:
-    containerdVolumeSizeGB: 15
+    libVolumeSizeGB: 15
     etcdVolumeSizeGB: 50
-    kubeletVolumeSizeGB: 10
     rootVolumeSizeGB: 10
     apiMode: private
 
