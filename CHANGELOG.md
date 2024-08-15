@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.19.0] - 2024-08-15
+
 ### Fixed
 
 - Replace `containerdVolumeSizeGB` and `kubeletVolumeSizeGB` with `libVolumeSizeGB`.
@@ -193,7 +195,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.18.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.19.0...HEAD
+[1.19.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.18.1...v1.19.0
 [1.18.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.18.0...v1.18.1
 [1.18.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.17.2...v1.18.0
 [1.17.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.17.1...v1.17.2
