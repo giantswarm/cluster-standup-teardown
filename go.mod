@@ -9,7 +9,7 @@ replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.16
 replace github.com/alessio/shellescape => al.essio.dev/pkg/shellescape v1.4.2
 
 require (
-	dario.cat/mergo v1.0.0
+	dario.cat/mergo v1.0.1
 	github.com/giantswarm/apiextensions-application v0.6.2
 	github.com/giantswarm/clustertest v1.18.0
 	github.com/onsi/gomega v1.34.1
