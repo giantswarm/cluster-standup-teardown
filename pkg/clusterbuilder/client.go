@@ -48,7 +48,7 @@ func LoadOrBuildCluster(framework *clustertest.Framework, clusterBuilder Cluster
 func GetClusterBuilderForContext(context string) (ClusterBuilder, error) {
 	knownBuilders := []ClusterBuilder{
 		&capa.ClusterBuilder{}, &capa.ManagedClusterBuilder{}, &capa.PrivateClusterBuilder{},
-		&capv.ClusterBuilder{},
+		&capv.ClusterBuilder{}, &capz.PrivateClusterBuilder{},
 		&capvcd.ClusterBuilder{},
 		&capz.ClusterBuilder{},
 	}
