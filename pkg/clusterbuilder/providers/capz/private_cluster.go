@@ -2,8 +2,6 @@ package capz
 
 import (
 	_ "embed"
-	"fmt"
-	"math/rand"
 
 	"github.com/giantswarm/clustertest/pkg/application"
 	"github.com/giantswarm/clustertest/pkg/organization"
