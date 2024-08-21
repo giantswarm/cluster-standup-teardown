@@ -46,7 +46,7 @@ func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string
 		},
 	}
 
-	return application.NewClusterApp(clusterName, application.ProviderAWS).
+	return application.NewClusterApp(clusterName, application.ProviderAzure).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
 
