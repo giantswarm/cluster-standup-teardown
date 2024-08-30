@@ -1,8 +1,7 @@
 package values
 
 import (
-	"os"
-
+	"github.com/giantswarm/clustertest/pkg/utils"
 	"sigs.k8s.io/yaml"
 )
 
@@ -23,20 +22,12 @@ func BuildBaseValues() string {
 	v := baseValues{
 		Global: global{
 			Metadata: metadata{
-				Labels: map[string]string{
-					"monitoring.giantswarm.io/prometheus-volume-size": "small",
-				},
+				Labels: utils.GetBaseLabels(),
 			},
 		},
 	}
 
-	// If found, populate details about Tekton run as labels
-	if os.Getenv("TEKTON_PIPELINE_RUN") != "" {
-		v.Global.Metadata.Labels["cicd.giantswarm.io/pipelinerun"] = os.Getenv("TEKTON_PIPELINE_RUN")
-	}
-	if os.Getenv("TEKTON_TASK_RUN") != "" {
-		v.Global.Metadata.Labels["cicd.giantswarm.io/taskrun"] = os.Getenv("TEKTON_TASK_RUN")
-	}
+	v.Global.Metadata.Labels["monitoring.giantswarm.io/prometheus-volume-size"] = "small"
 
 	bytes, _ := yaml.Marshal(v)
 	return string(bytes)
