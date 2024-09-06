@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Upgraded `clustertest` to v1.23.0 and transient deps to latest
+
 ## [1.23.1] - 2024-09-02
 
 ### Fixed
