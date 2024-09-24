@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update capvcd values to not include node classes.
+
 ## [1.25.1] - 2024-09-19
 
 ### Fixed
