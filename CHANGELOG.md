@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.25.2] - 2024-09-24
+
 ### Changed
 
 - Update capvcd values to not include node classes.
@@ -247,7 +249,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.2...HEAD
+[1.25.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.1...v1.25.2
 [1.25.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.0...v1.25.1
 [1.25.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.24.0...v1.25.0
 [1.24.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.23.1...v1.24.0
