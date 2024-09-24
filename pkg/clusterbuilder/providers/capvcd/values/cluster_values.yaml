@@ -23,17 +23,14 @@ global:
       usernameClaim: "email"
   nodePools:
     worker:
-      class: default
+      sizingPolicy: m1.large
+      diskSizeGB: 30
       replicas: 2
   providerSpecific:
     org: GIANT_SWARM
     ovdc: Org-GIANT-SWARM
     site: "https://cd.neoedge.cloud"
     ovdcNetwork: GS-ISOLATED
-    nodeClasses:
-      default:
-        sizingPolicy: m1.large
-        diskSizeGB: 30
     userContext:
       secretRef:
         secretName: vcd-credentials
