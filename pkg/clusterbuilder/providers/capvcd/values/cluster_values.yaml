@@ -12,6 +12,7 @@ global:
   metadata:
     description: "E2E Test cluster"
     organization: "{{ .Organization }}"
+    name: "{{ .ClusterName }}"
   controlPlane:
     replicas: 3
     diskSizeGB: 30
