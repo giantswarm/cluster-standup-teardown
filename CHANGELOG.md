@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Update `clustertest` with Provider fix when loading existing workload cluster
+
 ## [1.25.4] - 2024-10-08
 
 ### Changed
