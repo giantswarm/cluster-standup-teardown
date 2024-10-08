@@ -1,4 +1,5 @@
 global:
+global:
   metadata:
     description: "E2E Test cluster"
     name: "{{ .ClusterName }}"
@@ -9,6 +10,7 @@ global:
         ipPoolName: "wc-cp-ips" # [string] Ip for control plane will be drawn from this GlobalInClusterIPPool (for gcapeverde it's 10.10.222.232 - 10.10.222.238 inclusive)
       loadBalancers:
         ipPoolName: "svc-lb-ips" # [string] Ip for control plane will be drawn from this GlobalInClusterIPPool (for gcapeverde it's 10.10.222.245 - 10.10.222.249 inclusive)
+        numberOfIps: 1
     baseDomain: test.gigantic.io
   controlPlane:
     replicas: 1
