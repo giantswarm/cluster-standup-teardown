@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.25.6] - 2024-10-08
+
 ### Changed
 
 - Change number of reserved IPs for LB in vSphere pool to 1.
@@ -271,7 +273,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.5...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.6...HEAD
+[1.25.6]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.5...v1.25.6
 [1.25.5]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.4...v1.25.5
 [1.25.4]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.3...v1.25.4
 [1.25.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.2...v1.25.3
