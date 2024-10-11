@@ -1,11 +1,15 @@
+cluster:
+  providerIntegration:
+    components:
+      systemd:
+        timesyncd:
+          ntp:
+            - "10.205.105.253"
 global:
   connectivity:
     network:
       loadBalancers:
         vipSubnet: "10.205.9.254/24"
-    ntp:
-      servers:
-        - "10.205.105.253"
     proxy:
       enabled: true
       httpProxy: "http://10.205.105.253:3128"
@@ -18,13 +22,14 @@ global:
     name: "{{ .ClusterName }}"
   controlPlane:
     replicas: 3
-    diskSizeGB: 30
-    sizingPolicy: m1.large
     oidc:
       clientId: "dex-k8s-authenticator"
       groupsClaim: "groups"
       issuerUrl: "https://dex.gerbil.test.gigantic.io"
       usernameClaim: "email"
+    machineTemplate:
+      diskSizeGB: 30
+      sizingPolicy: m1.large
   nodePools:
     worker:
       sizingPolicy: m1.large
