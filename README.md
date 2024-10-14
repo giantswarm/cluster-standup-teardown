@@ -99,6 +99,14 @@ Once the workload cluster is ready two files will be produced:
 go install github.com/giantswarm/cluster-standup-teardown/cmd/standup@latest
 ```
 
+If this fails with the error `The go.mod file for the module providing named packages contains one or more replace directives.` then
+you can install the binary directly from this repo:
+
+```
+cd cmd/standup
+go install ./
+```
+
 #### Usage
 
 ```
