@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Updated `clustertest` to include latest supported Release providers
+
 ## [1.25.7] - 2024-10-11
 
 - Update CAPVCD values for provider version v0.61.0
