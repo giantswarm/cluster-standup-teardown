@@ -13,8 +13,6 @@ global:
     baseDomain: test.gigantic.io
   controlPlane:
     replicas: 1
-    image:
-      repository: registry.k8s.io
     machineTemplate:
       cloneMode: "linkedClone"
       diskGiB: 50
@@ -25,7 +23,6 @@ global:
         devices:
           - networkName: 'grasshopper-capv'
             dhcp4: true
-    resourceRatio: 8
   nodePools:
     worker:
       replicas: 2
