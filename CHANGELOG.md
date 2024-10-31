@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.26.1] - 2024-10-31
+
 ### Changed
 
 - Drop deprecated values from `cluster-vsphere` tests
@@ -293,7 +295,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.26.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.26.1...HEAD
+[1.26.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.26.0...v1.26.1
 [1.26.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.8...v1.26.0
 [1.25.8]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.7...v1.25.8
 [1.25.7]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.6...v1.25.7
