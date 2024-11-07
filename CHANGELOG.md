@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.27.1] - 2024-11-07
+
 ## Fixed
 
 - Updated `clustertest` to fix Cloud Director.
@@ -305,7 +307,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.1...HEAD
+[1.27.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.0...v1.27.1
 [1.27.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.26.1...v1.27.0
 [1.26.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.26.0...v1.26.1
 [1.26.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.25.8...v1.26.0
