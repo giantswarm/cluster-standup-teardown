@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Fixed
+
+- Updated `clustertest` to fix release name when having provider with a hyphen.
+
 ## [1.27.1] - 2024-11-07
 
 ## Fixed
