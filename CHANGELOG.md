@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.27.3] - 2024-11-13
+
 ### Changed
 
 - Update CAPV values to deploy on new Neoedge provider
@@ -317,7 +319,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.3...HEAD
+[1.27.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.2...v1.27.3
 [1.27.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.1...v1.27.2
 [1.27.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.0...v1.27.1
 [1.27.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.26.1...v1.27.0
