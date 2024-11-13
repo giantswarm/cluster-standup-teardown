@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update CAPV values to deploy on new Neoedge provider
+
 ## [1.27.2] - 2024-11-07
 
 ## Fixed
