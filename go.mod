@@ -12,7 +12,7 @@ require (
 	github.com/giantswarm/clustertest v1.30.2
 	github.com/onsi/gomega v1.35.1
 	github.com/spf13/cobra v1.8.1
-	k8s.io/apimachinery v0.31.2
+	k8s.io/apimachinery v0.31.3
 	sigs.k8s.io/controller-runtime v0.19.1
 	sigs.k8s.io/yaml v1.4.0
 )
