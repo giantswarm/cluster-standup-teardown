@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- CAPA: use lower heartbeat timeout to allow spot instances to terminate more quickly
+
 ## [1.27.3] - 2024-11-13
 
 ### Changed
