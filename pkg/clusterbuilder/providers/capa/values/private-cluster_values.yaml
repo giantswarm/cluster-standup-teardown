@@ -52,6 +52,15 @@ global:
       maxSize: 5
       minSize: 2
       rootVolumeSizeGB: 25
+
+      # With spot instances, aws-node-termination-handler may not receive any ASG lifecycle hook events
+      # and we don't want to wait for the default 30 minutes of heartbeat timeout before instances
+      # terminate. That would fail the tests. This can be fixed once heartbeats are implemented
+      # (https://github.com/aws/aws-node-termination-handler/issues/493), since then we would reduce
+      # cluster-aws's defaults to a low value, let's say `heartbeatTimeout: 5m` and `globalTimeout: 30m`.
+      awsNodeTerminationHandler:
+        heartbeatTimeoutSeconds: 100
+
       spotInstances:
         enabled: true
         maxPrice: 0.2960
