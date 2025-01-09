@@ -9,7 +9,7 @@ replace github.com/alessio/shellescape => al.essio.dev/pkg/shellescape v1.5.1
 require (
 	dario.cat/mergo v1.0.1
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest v1.32.0
+	github.com/giantswarm/clustertest v1.32.1
 	github.com/onsi/gomega v1.36.2
 	github.com/spf13/cobra v1.8.1
 	k8s.io/apimachinery v0.32.0
