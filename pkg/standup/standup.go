@@ -68,7 +68,7 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 		Should(Succeed())
 
 	ctx := context.Background()
-	applyCtx, cancelApplyCtx := context.WithTimeout(ctx, 20*time.Minute)
+	applyCtx, cancelApplyCtx := context.WithTimeout(ctx, 25*time.Minute)
 	defer cancelApplyCtx()
 
 	client, err := c.Framework.ApplyCluster(applyCtx, cluster)
