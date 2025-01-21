@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Stop using spot instances for CAPA WCs
+
 ## [1.27.4] - 2024-12-11
 
 ### Changed
