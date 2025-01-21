@@ -19,9 +19,6 @@ global:
       maxSize: 5
       minSize: 2
       rootVolumeSizeGB: 25
-      # spot instances are disabled for china because the pricing there is so random that it is hard to set any reliable values that will not cause e2e flaky
-      spotInstances:
-        enabled: false
 
   apps:
     externalDns:
