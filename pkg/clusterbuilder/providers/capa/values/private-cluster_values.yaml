@@ -52,6 +52,11 @@ global:
       maxSize: 5
       minSize: 2
       rootVolumeSizeGB: 25
+      # This can be probably removed once heartbeats are implemented
+      # (https://github.com/aws/aws-node-termination-handler/issues/493), since then we would reduce
+      # cluster-aws's defaults to a low value, let's say `heartbeatTimeout: 5m` and `globalTimeout: 30m`.
+      awsNodeTerminationHandler:
+        heartbeatTimeoutSeconds: 100
 
   apps:
     certManager:
