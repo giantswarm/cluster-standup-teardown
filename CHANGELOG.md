@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bring back lower heartbeat timeout to allow NTH to terminate instances more quickly.
+
 ## [1.29.0] - 2025-01-21
 
 ### Changed
