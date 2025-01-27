@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.30.0] - 2025-01-27
+
 ### Changed
 
 - Bring back lower heartbeat timeout to allow NTH to terminate instances more quickly.
@@ -341,7 +343,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.29.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.30.0...HEAD
+[1.30.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.29.0...v1.30.0
 [1.29.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.28.0...v1.29.0
 [1.28.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.4...v1.28.0
 [1.27.4]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.27.3...v1.27.4
