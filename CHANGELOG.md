@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated to `clustertest` v1.33.0 which now handles the `E2E_KEEP_WC` env var in the framework.
+
 ## [1.30.0] - 2025-01-27
 
 ### Changed
