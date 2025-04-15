@@ -43,7 +43,7 @@ func Merge(layers ...string) (string, error) {
 
 // MustLoadValuesFile attempts to load a values file from the provided filePath and if fails returns an empty string
 func MustLoadValuesFile(filePath string) string {
-	fileBytes, err := os.ReadFile(filePath)
+	fileBytes, err := os.ReadFile(filePath) // nolint:gosec
 	if err != nil {
 		return ""
 	}

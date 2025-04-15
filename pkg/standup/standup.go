@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	. "github.com/onsi/gomega"
+	. "github.com/onsi/gomega" // nolint:staticcheck
 
 	"github.com/giantswarm/clustertest"
 	"github.com/giantswarm/clustertest/pkg/application"
