@@ -8,7 +8,7 @@ import (
 	"path"
 	"time"
 
-	. "github.com/onsi/gomega"
+	. "github.com/onsi/gomega" // nolint:staticcheck
 
 	"github.com/giantswarm/apiextensions-application/api/v1alpha1"
 	"github.com/giantswarm/clustertest"
@@ -186,7 +186,7 @@ func run(cmd *cobra.Command, args []string) error {
 		KubeconfigPath: "",
 	}
 
-	resultsFile, err := os.Create(path.Join(outputDirectory, "results.json"))
+	resultsFile, err := os.Create(path.Join(outputDirectory, "results.json")) // nolint:gosec
 	if err != nil {
 		return err
 	}
@@ -200,7 +200,7 @@ func run(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	resultsFile.Close()
+	resultsFile.Close() // nolint:errcheck,gosec
 
 	fmt.Printf("Standing up cluster...\n\nProvider:\t\t%s\nCluster Name:\t\t%s\nOrg Name:\t\t%s\nResults Directory:\t%s\n\n", provider, clusterName, orgName, outputDirectory)
 
@@ -210,11 +210,11 @@ func run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Save the kubeconfig for the WC
-	kubeconfigFile, err := os.Create(path.Join(outputDirectory, "kubeconfig"))
+	kubeconfigFile, err := os.Create(path.Join(outputDirectory, "kubeconfig")) // nolint:gosec
 	if err != nil {
 		return err
 	}
-	defer kubeconfigFile.Close()
+	defer kubeconfigFile.Close() // nolint:errcheck
 
 	kubeconfig, err := framework.MC().GetClusterKubeConfig(ctx, cluster.Name, cluster.GetNamespace())
 	if err != nil {
@@ -228,11 +228,11 @@ func run(cmd *cobra.Command, args []string) error {
 	// Update the results file with the kubeconfig path
 	result.KubeconfigPath = kubeconfigFile.Name()
 
-	resultsFile, err = os.Create(path.Join(outputDirectory, "results.json"))
+	resultsFile, err = os.Create(path.Join(outputDirectory, "results.json")) // nolint:gosec
 	if err != nil {
 		return err
 	}
-	defer resultsFile.Close()
+	defer resultsFile.Close() // nolint:errcheck
 
 	resultBytes, err = json.Marshal(result)
 	if err != nil {

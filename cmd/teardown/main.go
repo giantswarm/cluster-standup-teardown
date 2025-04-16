@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	. "github.com/onsi/gomega"
+	. "github.com/onsi/gomega" // nolint:staticcheck
 
 	"github.com/giantswarm/cluster-standup-teardown/cmd/standup/types"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/teardown"
@@ -61,7 +61,7 @@ func run(cmd *cobra.Command, args []string) error {
 
 	// Load cluster details from previous standup results
 	if standupDirectory != "" {
-		resultBytes, err := os.ReadFile(path.Join(standupDirectory, "results.json"))
+		resultBytes, err := os.ReadFile(path.Join(standupDirectory, "results.json")) // nolint:gosec
 		if err != nil {
 			return err
 		}
