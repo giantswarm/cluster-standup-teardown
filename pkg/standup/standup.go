@@ -3,6 +3,7 @@ package standup
 import (
 	"context"
 	"os"
+	"strings"
 	"time"
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
@@ -60,7 +61,10 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 	Eventually(func() error {
 		logger.Log("Checking connection to MC is available.")
 		logger.Log("MC API Endpoint: '%s'", c.Framework.MC().GetAPIServerEndpoint())
-		logger.Log("MC name: '%s'", c.Framework.MC().GetClusterName())
+		mcName := c.Framework.MC().GetClusterName()
+		// Strip the Teleport prefix that is automatically added to the cluster name so we just log out the installation name
+		mcName = strings.TrimPrefix(mcName, "teleport.giantswarm.io-")
+		logger.Log("MC name: '%s'", mcName)
 		return c.Framework.MC().CheckConnection()
 	}).
 		WithTimeout(5 * time.Minute).
