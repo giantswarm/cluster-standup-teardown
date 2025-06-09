@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix linting issues.
+- Strip Teleport prefix from MC name in log output
 
 ## [1.31.0] - 2025-02-20
 
