@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.31.1] - 2025-06-09
+
 ### Fixed
 
 - Fix linting issues.
@@ -354,7 +356,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.31.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.31.1...HEAD
+[1.31.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.31.0...v1.31.1
 [1.31.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.30.0...v1.31.0
 [1.30.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.29.0...v1.30.0
 [1.29.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.28.0...v1.29.0
