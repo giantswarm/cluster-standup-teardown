@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- CAPA: migrate to plural `vpcCidrs` value
+
 ## [1.31.1] - 2025-06-09
 
 ### Fixed

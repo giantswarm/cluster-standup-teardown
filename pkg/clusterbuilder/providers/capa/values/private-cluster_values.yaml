@@ -11,6 +11,8 @@ global:
       mode: public
     network:
       vpcCidr: 10.{{ index .ExtraValues "CIDRSecondOctet" }}.0.0/18
+      vpcCidrs:
+        - 10.{{ index .ExtraValues "CIDRSecondOctet" }}.0.0/18
     proxy:
       enabled: true
       httpProxy: http://proxy.goatproxy.gaws.gigantic.io:4000
