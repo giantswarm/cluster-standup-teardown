@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Decrease `instanceWarmup` to 3 minutes for CAPA worker nodes to speed up upgrade test case
+
 ## [1.32.0] - 2025-06-24
 
 ### Added

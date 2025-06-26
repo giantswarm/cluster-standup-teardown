@@ -23,6 +23,8 @@ global:
       maxSize: 3
       minSize: 2
       rootVolumeSizeGB: 25
+      # Speed up the ASG cycle when upgrading to avoid having long running test case
+      instanceWarmup: 180
 
   apps:
     clusterAutoscaler:
