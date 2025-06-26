@@ -57,6 +57,8 @@ global:
       # cluster-aws's defaults to a low value, let's say `heartbeatTimeout: 5m` and `globalTimeout: 30m`.
       awsNodeTerminationHandler:
         heartbeatTimeoutSeconds: 100
+      # Speed up the ASG cycle when upgrading to avoid having long running test case
+      instanceWarmup: 180
 
   apps:
     certManager:
