@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.33.0] - 2025-06-26
+
 ### Changed
 
 - Decrease `instanceWarmup` to 3 minutes for CAPA worker nodes to speed up upgrade test case
@@ -366,7 +368,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.32.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.33.0...HEAD
+[1.33.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.32.0...v1.33.0
 [1.32.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.31.1...v1.32.0
 [1.31.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.31.0...v1.31.1
 [1.31.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.30.0...v1.31.0
