@@ -13,8 +13,8 @@ global:
       vpcCidr: 10.{{ index .ExtraValues "CIDRSecondOctet" }}.0.0/18
     proxy:
       enabled: true
-      httpProxy: http://proxy.goatproxy.gaws.gigantic.io:4000
-      httpsProxy: http://proxy.goatproxy.gaws.gigantic.io:4000
+      httpProxy: http://proxy.operations.awsprod.gigantic.io:4000
+      httpsProxy: http://proxy.operations.awsprod.gigantic.io:4000
     subnets:
       - cidrBlocks:
           - availabilityZone: a
