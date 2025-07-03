@@ -33,10 +33,10 @@ func (c *PrivateClusterBuilder) NewClusterApp(clusterName string, orgName string
 		orgName = utils.GenerateRandomName("t")
 	}
 
-	// WC CIDRs have to not overlap and be in the 10.129. - 10.159. range, so
+	// WC CIDRs have to not overlap and be in the 10.225. - 10.255. range, so
 	// we select a random number in that range and set it as the second octet.
 	//nolint:gosec
-	randomOctet := rand.Intn(31) + 129 // Generates a number between 129 and 159 inclusive.
+	randomOctet := rand.Intn(30) + 225
 	cidrOctet := fmt.Sprintf("%d", randomOctet)
 	templateValues := &application.TemplateValues{
 		ClusterName:  clusterName,
