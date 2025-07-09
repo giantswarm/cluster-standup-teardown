@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.33.2] - 2025-07-09
+
 ### Changed
 
 - Fix private cluster baseDomain
@@ -378,7 +380,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.33.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.33.2...HEAD
+[1.33.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.33.1...v1.33.2
 [1.33.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.33.0...v1.33.1
 [1.33.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.32.0...v1.33.0
 [1.32.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.31.1...v1.32.0
