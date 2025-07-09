@@ -5,7 +5,7 @@ global:
     organization: "{{ .Organization }}"
 
   connectivity:
-    baseDomain: gawsprivte.gigantic.io
+    baseDomain: gawsprivate.gigantic.io
     availabilityZoneUsageLimit: 3
     dns:
       mode: public
