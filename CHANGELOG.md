@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.33.3] - 2025-07-09
 
+### Changed
+
+- Fix private cluster baseDomain
+
 ## [1.33.2] - 2025-07-09
 
 ### Changed
