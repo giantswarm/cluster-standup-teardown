@@ -28,12 +28,12 @@ global:
       issuerUrl: "https://dex.gerbil.test.gigantic.io"
       usernameClaim: "email"
     machineTemplate:
-      diskSizeGB: 30
+      diskSizeGB: 50
       sizingPolicy: m1.large
   nodePools:
     worker:
       sizingPolicy: m1.large
-      diskSizeGB: 30
+      diskSizeGB: 50
       replicas: 2
   providerSpecific:
     org: GIANT_SWARM
