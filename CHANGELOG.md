@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Increase CAPVCD nodes disk size to work with 1.31.
+
 ## [1.34.2] - 2025-08-06
 
 ### Changed
