@@ -5,7 +5,7 @@ go 1.24.5
 require (
 	dario.cat/mergo v1.0.2
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest v1.38.2
+	github.com/giantswarm/clustertest v1.39.0
 	github.com/onsi/gomega v1.38.0
 	github.com/spf13/cobra v1.9.1
 	k8s.io/apimachinery v0.33.4
