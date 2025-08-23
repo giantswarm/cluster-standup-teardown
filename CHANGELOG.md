@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.35.2] - 2025-08-23
+
 ### Changed
 
 - Go: Upgrade `clustertest` to v1.39.2, downgrade Cluster API to v1.10.5.
@@ -421,7 +423,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.35.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.35.2...HEAD
+[1.35.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.35.1...v1.35.2
 [1.35.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.35.0...v1.35.1
 [1.35.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.34.2...v1.35.0
 [1.34.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.34.1...v1.34.2
