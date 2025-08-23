@@ -1,11 +1,11 @@
 module github.com/giantswarm/cluster-standup-teardown
 
-go 1.24.5
+go 1.24.6
 
 require (
 	dario.cat/mergo v1.0.2
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest v1.39.1
+	github.com/giantswarm/clustertest v1.39.2
 	github.com/onsi/gomega v1.38.1
 	github.com/spf13/cobra v1.9.1
 	k8s.io/apimachinery v0.33.4
@@ -117,6 +117,7 @@ require (
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
 	go.opentelemetry.io/otel v1.37.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.37.0 // indirect
 	go.opentelemetry.io/otel/trace v1.37.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
@@ -150,7 +151,7 @@ require (
 	k8s.io/kubectl v0.33.4 // indirect
 	k8s.io/utils v0.0.0-20250820121507-0af2bda4dd1d // indirect
 	oras.land/oras-go/v2 v2.6.0 // indirect
-	sigs.k8s.io/cluster-api v1.11.0 // indirect
+	sigs.k8s.io/cluster-api v1.10.5 // indirect
 	sigs.k8s.io/e2e-framework v0.6.0 // indirect
 	sigs.k8s.io/gateway-api v1.3.0 // indirect
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect

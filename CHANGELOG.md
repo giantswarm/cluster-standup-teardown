@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Go: Upgrade `clustertest` to v1.39.2, downgrade Cluster API to v1.10.5.
+
 ## [1.35.1] - 2025-08-22
 
 ### Changed
