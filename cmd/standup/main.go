@@ -146,7 +146,7 @@ func run(cmd *cobra.Command, args []string) error {
 		// As EKS has no control plane we only check for worker nodes being ready
 		clusterReadyFns = []func(wcClient *client.Client){func(wcClient *client.Client) {
 			_ = wait.For(
-				wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, &cr.MatchingLabels{"node-role.kubernetes.io/worker": ""}),
+				wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, client.DoesNotHaveLabels{"node-role.kubernetes.io/control-plane"}),
 				wait.WithTimeout(20*time.Minute),
 				wait.WithInterval(15*time.Second),
 			)
