@@ -8,13 +8,13 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/clustertest"
-	"github.com/giantswarm/clustertest/pkg/application"
-	clustertestclient "github.com/giantswarm/clustertest/pkg/client"
-	"github.com/giantswarm/clustertest/pkg/env"
-	"github.com/giantswarm/clustertest/pkg/logger"
-	"github.com/giantswarm/clustertest/pkg/utils"
-	"github.com/giantswarm/clustertest/pkg/wait"
+	"github.com/giantswarm/clustertest/v2"
+	"github.com/giantswarm/clustertest/v2/pkg/application"
+	clustertestclient "github.com/giantswarm/clustertest/v2/pkg/client"
+	"github.com/giantswarm/clustertest/v2/pkg/env"
+	"github.com/giantswarm/clustertest/v2/pkg/logger"
+	"github.com/giantswarm/clustertest/v2/pkg/utils"
+	"github.com/giantswarm/clustertest/v2/pkg/wait"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
