@@ -6,9 +6,9 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/clustertest"
-	"github.com/giantswarm/clustertest/pkg/application"
-	"github.com/giantswarm/clustertest/pkg/logger"
+	"github.com/giantswarm/clustertest/v2"
+	"github.com/giantswarm/clustertest/v2/pkg/application"
+	"github.com/giantswarm/clustertest/v2/pkg/logger"
 
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capa"
 	"github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder/providers/capv"

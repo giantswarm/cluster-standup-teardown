@@ -11,12 +11,12 @@ import (
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
 	"github.com/giantswarm/apiextensions-application/api/v1alpha1"
-	"github.com/giantswarm/clustertest"
-	"github.com/giantswarm/clustertest/pkg/application"
-	"github.com/giantswarm/clustertest/pkg/client"
-	"github.com/giantswarm/clustertest/pkg/organization"
-	"github.com/giantswarm/clustertest/pkg/utils"
-	"github.com/giantswarm/clustertest/pkg/wait"
+	"github.com/giantswarm/clustertest/v2"
+	"github.com/giantswarm/clustertest/v2/pkg/application"
+	"github.com/giantswarm/clustertest/v2/pkg/client"
+	"github.com/giantswarm/clustertest/v2/pkg/organization"
+	"github.com/giantswarm/clustertest/v2/pkg/utils"
+	"github.com/giantswarm/clustertest/v2/pkg/wait"
 	"github.com/spf13/cobra"
 	apitypes "k8s.io/apimachinery/pkg/types"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"

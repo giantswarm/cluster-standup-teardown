@@ -3,9 +3,9 @@ package capz
 import (
 	_ "embed"
 
-	"github.com/giantswarm/clustertest/pkg/application"
-	"github.com/giantswarm/clustertest/pkg/organization"
-	"github.com/giantswarm/clustertest/pkg/utils"
+	"github.com/giantswarm/clustertest/v2/pkg/application"
+	"github.com/giantswarm/clustertest/v2/pkg/organization"
+	"github.com/giantswarm/clustertest/v2/pkg/utils"
 
 	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
 )
