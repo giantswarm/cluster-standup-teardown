@@ -21,10 +21,10 @@ import (
 	apitypes "k8s.io/apimachinery/pkg/types"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/giantswarm/cluster-standup-teardown/cmd/standup/types"
-	cb "github.com/giantswarm/cluster-standup-teardown/pkg/clusterbuilder"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/standup"
-	"github.com/giantswarm/cluster-standup-teardown/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v2/cmd/standup/types"
+	cb "github.com/giantswarm/cluster-standup-teardown/v2/pkg/clusterbuilder"
+	"github.com/giantswarm/cluster-standup-teardown/v2/pkg/standup"
+	"github.com/giantswarm/cluster-standup-teardown/v2/pkg/values"
 )
 
 var (
