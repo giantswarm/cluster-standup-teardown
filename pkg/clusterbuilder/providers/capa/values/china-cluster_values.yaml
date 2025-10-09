@@ -4,6 +4,13 @@ global:
     description: "E2E Test cluster"
     organization: "{{ .Organization }}"
 
+  components:
+    containerd:
+      containerRegistries:
+        gsoci.azurecr.io:
+          - endpoint: giantswarm-registry.cn-shanghai.cr.aliyuncs.com
+          - endpoint: gsoci.azurecr.io
+
   controlPlane:
     libVolumeSizeGB: 15
     etcdVolumeSizeGB: 50
