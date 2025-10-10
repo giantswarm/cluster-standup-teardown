@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 2025-10-10
+
 ### Changed
 
 - Use aliyun container registry configuration for China clusters.
@@ -457,7 +459,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.3...HEAD
+[2.0.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v1.36.0...v2.0.0
