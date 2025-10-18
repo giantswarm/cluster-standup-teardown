@@ -5,7 +5,7 @@ go 1.25.2
 require (
 	dario.cat/mergo v1.0.2
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest/v2 v2.0.3
+	github.com/giantswarm/clustertest/v2 v2.1.1
 	github.com/onsi/gomega v1.38.2
 	github.com/spf13/cobra v1.10.1
 	k8s.io/apimachinery v0.34.1
@@ -25,7 +25,7 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
-	github.com/cert-manager/cert-manager v1.19.0 // indirect
+	github.com/cert-manager/cert-manager v1.19.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/chai2010/gettext-go v1.0.3 // indirect
 	github.com/clipperhouse/uax29/v2 v2.2.0 // indirect
@@ -50,7 +50,7 @@ require (
 	github.com/giantswarm/microerror v0.4.1 // indirect
 	github.com/giantswarm/organization-operator v1.6.4 // indirect
 	github.com/giantswarm/release-operator/v4 v4.2.1 // indirect
-	github.com/giantswarm/releases/sdk v0.10.0 // indirect
+	github.com/giantswarm/releases/sdk v0.11.0 // indirect
 	github.com/go-errors/errors v1.5.1 // indirect
 	github.com/go-gorp/gorp/v3 v3.1.0 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
@@ -75,8 +75,7 @@ require (
 	github.com/google/btree v1.1.3 // indirect
 	github.com/google/gnostic-models v0.7.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/go-github/v66 v66.0.0 // indirect
-	github.com/google/go-github/v75 v75.0.0 // indirect
+	github.com/google/go-github/v76 v76.0.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674 // indirect
@@ -142,8 +141,10 @@ require (
 	golang.org/x/term v0.36.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
+	golang.org/x/tools v0.38.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.5.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251007200510-49b9836ed3ff // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20251014184007-4626949a642f // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251014184007-4626949a642f // indirect
 	google.golang.org/grpc v1.76.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
