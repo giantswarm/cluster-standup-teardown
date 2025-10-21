@@ -12,6 +12,10 @@ global:
   nodePools:
     # We are using a name with 10 chars which is the max number of characters allowed by our kyverno policies.
     nodepool-0:
+      type: karpenter
+      rootVolumeSizeGB: 15
+      libVolumeSizeGB: 30
+      logVolumeSizeGB: 10
       requirements:
         - key: karpenter.k8s.aws/instance-family
           operator: NotIn
@@ -43,7 +47,6 @@ global:
           operator: In
           values:
             - linux
-      type: karpenter
 
   apps:
     externalDns:
