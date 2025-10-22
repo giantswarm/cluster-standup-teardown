@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.2] - 2025-10-22
+
 ### Fixed
 
 - Set the region of the CAPA private cluster to be the same as the MC where the private test runs. The MC and the WC are connected using a Transit Gateway, and both need to be on the same region.
@@ -481,7 +483,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.2.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.2.2...HEAD
+[2.2.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.3...v2.1.0
