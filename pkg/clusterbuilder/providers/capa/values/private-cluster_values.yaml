@@ -5,7 +5,8 @@ global:
     organization: "{{ .Organization }}"
 
   providerSpecific:
-    region: eu-north-1
+    # The MC and the WC are connected using a Transit Gateway, and both need to be on the same region, so we use here the MC region
+    region: eu-central-1
 
   connectivity:
     baseDomain: gawsprivate.gigantic.io
