@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2025-10-22
+
 ### Changed
 
 - Use `eu-north-1` region for CAPA tests to make use of our AWS reserved instances and save money.
@@ -469,7 +471,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.0.1...v2.0.2
