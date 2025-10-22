@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Set the region of the CAPA private cluster to be the same as the MC where the private test runs. The MC and the WC are connected using a Transit Gateway, and both need to be on the same region.
+
 ## [2.2.1] - 2025-10-22
 
 ### Changed
