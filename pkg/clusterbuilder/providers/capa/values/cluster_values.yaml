@@ -4,6 +4,9 @@ global:
     description: "E2E Test cluster"
     organization: "{{ .Organization }}"
 
+  providerSpecific:
+    region: eu-north-1
+
   controlPlane:
     libVolumeSizeGB: 15
     etcdVolumeSizeGB: 50

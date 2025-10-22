@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - When using `karpenter`, set disk sizes for the different node pool volumes to reduce costs.
+- Use `eu-north-1` region for CAPA tests to make use of our AWS reserved instances and save money.
 
 ## [2.0.3] - 2025-10-10
 
