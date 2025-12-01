@@ -12,8 +12,6 @@ import (
 )
 
 const (
-	RegCredSecretName          = "container-registries-configuration"
-	RegCredSecretNamespace     = "default"
 	VSphereCredSecretName      = "vsphere-credentials" //nolint:gosec
 	VSphereCredSecretNamespace = "org-giantswarm"
 )
@@ -50,12 +48,6 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 			},
 		).
 		WithExtraConfigs([]applicationv1alpha1.AppExtraConfig{
-			{
-				Kind:      "secret",
-				Name:      RegCredSecretName,
-				Namespace: RegCredSecretNamespace,
-				Priority:  25,
-			},
 			{
 				Kind:      "secret",
 				Name:      VSphereCredSecretName,
