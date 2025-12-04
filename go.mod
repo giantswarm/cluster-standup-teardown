@@ -7,7 +7,7 @@ require (
 	github.com/giantswarm/apiextensions-application v0.6.2
 	github.com/giantswarm/clustertest/v2 v2.2.1
 	github.com/onsi/gomega v1.38.2
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 	k8s.io/apimachinery v0.34.2
 	sigs.k8s.io/controller-runtime v0.22.4
 	sigs.k8s.io/yaml v1.6.0
