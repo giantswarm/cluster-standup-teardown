@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.3] - 2025-12-15
+
 ### Changed
 
 - Go: Update dependencies.
@@ -505,7 +507,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.3...HEAD
+[2.3.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.2...v2.3.3
 [2.3.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.1...v2.3.2
 [2.3.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.2.2...v2.3.0
