@@ -15,7 +15,7 @@ global:
     replicas: 1
     machineTemplate:
       folder: 'e2e-tests'
-      diskGiB: 50
+      diskGiB: 30
       numCPUs: 4
       memoryMiB: 8196
       network:
@@ -26,7 +26,7 @@ global:
     worker:
       replicas: 2
       folder: 'e2e-tests'
-      diskGiB: 50
+      diskGiB: 30
       numCPUs: 6
       memoryMiB: 16896
       network:
