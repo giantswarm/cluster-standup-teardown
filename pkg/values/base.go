@@ -1,7 +1,7 @@
 package values
 
 import (
-	"github.com/giantswarm/clustertest/v2/pkg/utils"
+	"github.com/giantswarm/clustertest/v3/pkg/utils"
 	"sigs.k8s.io/yaml"
 )
 
