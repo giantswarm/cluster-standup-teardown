@@ -4,10 +4,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/giantswarm/cluster-standup-teardown/v2/pkg/clusterbuilder/providers/capa"
-	"github.com/giantswarm/cluster-standup-teardown/v2/pkg/clusterbuilder/providers/capv"
-	"github.com/giantswarm/cluster-standup-teardown/v2/pkg/clusterbuilder/providers/capvcd"
-	"github.com/giantswarm/cluster-standup-teardown/v2/pkg/clusterbuilder/providers/capz"
+	"github.com/giantswarm/cluster-standup-teardown/v3/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/v3/pkg/clusterbuilder/providers/capv"
+	"github.com/giantswarm/cluster-standup-teardown/v3/pkg/clusterbuilder/providers/capvcd"
+	"github.com/giantswarm/cluster-standup-teardown/v3/pkg/clusterbuilder/providers/capz"
 )
 
 func Test_GetClusterBuilderForContext(t *testing.T) {
