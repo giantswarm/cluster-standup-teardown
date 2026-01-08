@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-01-08
+
 ### Changed
 
 - **BREAKING**: Removed `defaultAppsValuesOverrides` parameter from `ClusterBuilder.NewClusterApp()` interface.
@@ -533,7 +535,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v3.0.0...v4.0.0
 [3.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.4...v3.0.0
 [2.3.4]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.3...v2.3.4
 [2.3.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.2...v2.3.3

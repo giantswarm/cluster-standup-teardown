@@ -3,7 +3,7 @@ package capa
 import (
 	_ "embed"
 
-	"github.com/giantswarm/cluster-standup-teardown/v3/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v4/pkg/values"
 
 	"github.com/giantswarm/clustertest/v3/pkg/application"
 	"github.com/giantswarm/clustertest/v3/pkg/organization"

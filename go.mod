@@ -1,4 +1,4 @@
-module github.com/giantswarm/cluster-standup-teardown/v3
+module github.com/giantswarm/cluster-standup-teardown/v4
 
 go 1.25.5
 
