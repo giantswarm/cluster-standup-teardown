@@ -36,15 +36,13 @@ var (
 		RunE:    run,
 	}
 
-	provider          string
-	kubeContext       string
-	clusterValues     string
-	defaultAppValues  string
-	releaseVersion    string
-	releaseCommit     string
-	clusterVersion    string
-	defaultAppVersion string
-	outputDirectory   string
+	provider        string
+	kubeContext     string
+	clusterValues   string
+	releaseVersion  string
+	releaseCommit   string
+	clusterVersion  string
+	outputDirectory string
 
 	controlPlaneNodes int
 	workerNodes       int
@@ -75,7 +73,6 @@ func init() {
 	standupCmd.Flags().StringVar(&kubeContext, "context", "", "The kubernetes context to use (required)")
 
 	standupCmd.Flags().StringVar(&clusterValues, "cluster-values", "", "The path to the cluster app values")
-	standupCmd.Flags().StringVar(&defaultAppValues, "default-apps-values", "", "The path to the default-apps app values")
 	standupCmd.Flags().IntVar(&controlPlaneNodes, "control-plane-nodes", 1, "The number of control plane nodes to wait for being ready")
 	standupCmd.Flags().IntVar(&workerNodes, "worker-nodes", 1, "The number of worker nodes to wait for being ready")
 	standupCmd.Flags().StringVar(&outputDirectory, "output", "./", "The directory to store the results.json and kubeconfig in")
@@ -83,7 +80,6 @@ func init() {
 	standupCmd.Flags().StringVar(&releaseVersion, "release", application.ReleaseLatest, "The version of the Release to use")
 	standupCmd.Flags().StringVar(&releaseCommit, "release-commit", "", "The git commit to get the Release version from (defaults to main default if unset)")
 	standupCmd.Flags().StringVar(&clusterVersion, "cluster-version", "latest", "The version of the cluster app to install")
-	standupCmd.Flags().StringVar(&defaultAppVersion, "default-apps-version", "latest", "The version of the default-apps app to install")
 
 	standupCmd.Flags().BoolVar(&waitForApps, "wait-for-apps-ready", false, "Wait until all default apps are installed")
 
@@ -117,7 +113,6 @@ func run(cmd *cobra.Command, args []string) error {
 	orgName := utils.GenerateRandomName("t")
 
 	clusterValuesOverrides := []string{values.MustLoadValuesFile(clusterValues)}
-	defaultAppValuesOverrides := []string{values.MustLoadValuesFile(defaultAppValues)}
 
 	var cluster *application.Cluster
 	clusterBuilder, err := cb.GetClusterBuilderForContext(kubeContext)
@@ -128,18 +123,18 @@ func run(cmd *cobra.Command, args []string) error {
 				Version: releaseVersion,
 				Commit:  releaseCommit,
 			}).
-			WithAppVersions(clusterVersion, defaultAppVersion).WithOrg(organization.New(orgName)).
-			WithAppValuesFile(path.Clean(clusterValues), path.Clean(defaultAppValues), &application.TemplateValues{
+			WithAppVersions(clusterVersion).WithOrg(organization.New(orgName)).
+			WithAppValuesFile(path.Clean(clusterValues), &application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,
 			})
 	} else {
-		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides, defaultAppValuesOverrides).
+		cluster = clusterBuilder.NewClusterApp(clusterName, orgName, clusterValuesOverrides).
 			WithRelease(application.ReleasePair{
 				Version: releaseVersion,
 				Commit:  releaseCommit,
 			}).
-			WithAppVersions(clusterVersion, defaultAppVersion)
+			WithAppVersions(clusterVersion)
 	}
 
 	if provider == application.ProviderEKS {
