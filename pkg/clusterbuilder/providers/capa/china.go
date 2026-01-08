@@ -21,7 +21,7 @@ type ChinaBuilder struct {
 }
 
 // NewClusterApp builds a new CAPA cluster App
-func (c *ChinaBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
+func (c *ChinaBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -33,7 +33,6 @@ func (c *ChinaBuilder) NewClusterApp(clusterName string, orgName string, cluster
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
 			values.MustMergeValues(append([]string{baseChinaClusterValues}, clusterValuesOverrides...)...),
-			values.MustMergeValues(append([]string{baseDefaultAppsValues}, defaultAppsValuesOverrides...)...),
 			&application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,

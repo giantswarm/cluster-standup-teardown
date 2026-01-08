@@ -46,7 +46,7 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 		}
 
 		cluster = cluster.
-			WithAppVersions("latest", "latest").
+			WithAppVersions("latest").
 			WithRelease(application.ReleasePair{
 				Version: releaseVersion,
 				Commit:  "",

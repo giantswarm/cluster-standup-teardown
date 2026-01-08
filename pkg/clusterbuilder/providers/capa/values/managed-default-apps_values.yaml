@@ -1,9 +1,0 @@
-clusterName: "{{ .ClusterName }}"
-organization: "{{ .Organization }}"
-
-userConfig:
-  # We want to have external-dns watch for new ingress resources to speed up the DNS creation
-  externalDns:
-    configMap:
-      values:
-        triggerLoopOnEvent: true

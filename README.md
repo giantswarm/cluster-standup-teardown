@@ -126,8 +126,6 @@ Flags:
       --cluster-version string        The version of the cluster app to install (default "latest")
       --context string                The kubernetes context to use (required)
       --control-plane-nodes int       The number of control plane nodes to wait for being ready (default 1)
-      --default-apps-values string    The path to the default-apps app values
-      --default-apps-version string   The version of the default-apps app to install (default "latest")
   -h, --help                          help for standup
       --output string                 The directory to store the results.json and kubeconfig in (default "./")
       --provider string               The provider (required)

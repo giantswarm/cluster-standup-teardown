@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING**: Removed `defaultAppsValuesOverrides` parameter from `ClusterBuilder.NewClusterApp()` interface.
+- **BREAKING**: Updated calls to `WithAppVersions()`, `WithAppValues()`, `WithAppValuesFile()` to use new signatures without default-apps parameters.
+- Removed CLI flags `--default-apps-values` and `--default-apps-version` from standup command.
+- Removed all embedded `default-apps_values.yaml` files (no longer needed with unified cluster apps).
+- All providers now use unified cluster apps that deploy default apps directly.
+- Update `clustertest` to v3.1.0.
+
+### Removed
+
+- Deleted unused default-apps values files from all provider directories.
+
 ## [3.0.0] - 2026-01-08
 
 ### Changed

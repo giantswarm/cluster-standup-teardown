@@ -13,8 +13,6 @@ import (
 var (
 	//go:embed values/managed-cluster_values.yaml
 	baseManagedClusterValues string
-	//go:embed values/managed-default-apps_values.yaml
-	baseManagedDefaultAppsValues string
 )
 
 // ManagedClusterBuilder is the CAPA EKS ClusterBuilder
@@ -23,7 +21,7 @@ type ManagedClusterBuilder struct {
 }
 
 // NewClusterApp builds a new CAPA EKS cluster App
-func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
+func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -35,7 +33,6 @@ func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
 			values.MustMergeValues(append([]string{baseManagedClusterValues}, clusterValuesOverrides...)...),
-			values.MustMergeValues(append([]string{baseManagedDefaultAppsValues}, defaultAppsValuesOverrides...)...),
 			&application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,

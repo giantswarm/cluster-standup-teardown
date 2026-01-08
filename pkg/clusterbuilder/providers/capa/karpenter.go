@@ -21,7 +21,7 @@ type KarpenterBuilder struct {
 }
 
 // NewClusterApp builds a new CAPA cluster App
-func (c *KarpenterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string, defaultAppsValuesOverrides []string) *application.Cluster {
+func (c *KarpenterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
 	}
@@ -33,7 +33,6 @@ func (c *KarpenterBuilder) NewClusterApp(clusterName string, orgName string, clu
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
 			values.MustMergeValues(append([]string{baseKarpenterClusterValues}, clusterValuesOverrides...)...),
-			"",
 			&application.TemplateValues{
 				ClusterName:  clusterName,
 				Organization: orgName,
