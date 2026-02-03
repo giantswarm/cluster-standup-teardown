@@ -12,9 +12,30 @@ A helper module for use in Giant Swarm E2E test frameworks to handle the creatio
 go get github.com/giantswarm/cluster-standup-teardown
 ```
 
-### KubeConfig Requirements
+### Environment Variables
+
+#### E2E_KUBECONFIG
 
 When using this module to standup a workload cluster it is expected that the `E2E_KUBECONFIG` environment variable is set and pointing to a valid kubeconfig with expected contexts defined.
+
+#### E2E_OVERRIDE_VERSIONS
+
+The `E2E_OVERRIDE_VERSIONS` environment variable allows you to override app versions when creating test clusters. This is useful for testing specific versions of apps.
+
+**Format:** Comma-separated list of `app-name=version` pairs.
+
+**Example:**
+```bash
+export E2E_OVERRIDE_VERSIONS="cluster-aws=7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8,karpenter=2.0.0,aws-ebs-csi-driver=4.1.0"
+```
+
+This will:
+- Use the specified version for `cluster-aws` (the main cluster app)
+- Override `karpenter` and `aws-ebs-csi-driver` versions in the Release CR
+
+**Note:** When using a version with a commit SHA suffix (e.g., `7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8`), the app catalog will automatically be changed to `<catalog>-test` (e.g., `cluster` → `cluster-test`).
+
+### KubeConfig Contexts
 
 Each [ClusterBuilder](./pkg/clusterbuilder/) in this module has a specific KubeContext that it supports and that is expected to exist in the provided KubeConfig when running.
 

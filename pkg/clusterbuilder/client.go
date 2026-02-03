@@ -2,12 +2,14 @@ package clusterbuilder
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
 	"github.com/giantswarm/clustertest/v3"
 	"github.com/giantswarm/clustertest/v3/pkg/application"
+	"github.com/giantswarm/clustertest/v3/pkg/env"
 	"github.com/giantswarm/clustertest/v3/pkg/logger"
 
 	"github.com/giantswarm/cluster-standup-teardown/v4/pkg/clusterbuilder/providers/capa"
@@ -39,6 +41,47 @@ func LoadOrBuildCluster(framework *clustertest.Framework, clusterBuilder Cluster
 		"", "",
 		[]string{values.MustLoadValuesFile("./test_data/cluster_values.yaml")},
 	)
+
+	// Apply app overrides from E2E_OVERRIDE_VERSIONS for Release CR apps
+	cluster = ApplyAppOverridesFromEnv(cluster)
+
+	return cluster
+}
+
+// ApplyAppOverridesFromEnv reads the E2E_OVERRIDE_VERSIONS environment variable and applies
+// overrides for apps that are part of the Release CR.
+//
+// The E2E_OVERRIDE_VERSIONS env var is a comma-separated list of app=version pairs.
+// For example: "cluster-aws=1.2.3,karpenter=2.0.0,aws-ebs-csi-driver=4.1.0"
+//
+// This function enables testing specific versions of bundled apps (like karpenter,
+// aws-ebs-csi-driver, etc.) that are defined in the Release CR.
+//
+// Note: The cluster app (e.g., cluster-aws) is also processed here, but WithAppOverride()
+// will silently ignore it since it's not a "default app" in the Release CR (it's a component).
+// The cluster app version is handled separately via WithAppVersions() in the application package.
+func ApplyAppOverridesFromEnv(cluster *application.Cluster) *application.Cluster {
+	overrides := os.Getenv(env.OverrideVersions)
+	if overrides == "" {
+		return cluster
+	}
+
+	for _, pair := range strings.Split(overrides, ",") {
+		parts := strings.Split(pair, "=")
+		if len(parts) != 2 {
+			continue
+		}
+		appName := strings.TrimSpace(parts[0])
+		version := strings.TrimSpace(parts[1])
+
+		if appName == "" || version == "" {
+			continue
+		}
+
+		logger.Log("Attempting Release app override from E2E_OVERRIDE_VERSIONS: %s=%s", appName, version)
+		app := *application.New(appName, appName).WithVersion(version)
+		cluster = cluster.WithAppOverride(app)
+	}
 
 	return cluster
 }
