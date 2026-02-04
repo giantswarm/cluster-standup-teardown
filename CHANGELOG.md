@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0] - 2026-02-04
+
 ### Added
 
 - Support overriding Release CR app versions and catalogs via `E2E_OVERRIDE_VERSIONS` environment variable. Previously, this env var only worked for the cluster app (e.g., `cluster-aws`). Now it also applies overrides for bundled apps in the Release CR (e.g., `karpenter`, `aws-ebs-csi-driver`). Example: `E2E_OVERRIDE_VERSIONS="cluster-aws=7.2.5,aws-ebs-csi-driver=4.1.0:default,karpenter=2.0.0:giantswarm"`.
@@ -539,7 +541,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.0.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.0...HEAD
+[4.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.0.0...v4.1.0
 [4.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v3.0.0...v4.0.0
 [3.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.4...v3.0.0
 [2.3.4]: https://github.com/giantswarm/cluster-standup-teardown/compare/v2.3.3...v2.3.4
