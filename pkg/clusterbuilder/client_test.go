@@ -123,6 +123,26 @@ func Test_ApplyAppOverridesFromEnv(t *testing.T) {
 			envValue: "karpenter=2.0.0-abc123def456abc123def456abc123def456abc1",
 			provider: application.ProviderAWS,
 		},
+		{
+			name:     "single app with catalog",
+			envValue: "karpenter=2.0.0:giantswarm",
+			provider: application.ProviderAWS,
+		},
+		{
+			name:     "multiple apps with mixed catalog specifications",
+			envValue: "cluster-aws=7.2.5-abc123,aws-ebs-csi-driver=4.1.0:default,karpenter=2.0.0:giantswarm",
+			provider: application.ProviderAWS,
+		},
+		{
+			name:     "catalog with whitespace",
+			envValue: "karpenter=2.0.0: giantswarm ",
+			provider: application.ProviderAWS,
+		},
+		{
+			name:     "empty catalog after colon is treated as no catalog",
+			envValue: "karpenter=2.0.0:",
+			provider: application.ProviderAWS,
+		},
 	}
 
 	for _, tc := range tests {
@@ -193,6 +213,78 @@ func Test_ApplyAppOverridesFromEnv_VersionFormat(t *testing.T) {
 
 			if result == nil {
 				t.Fatal("ApplyAppOverridesFromEnv returned nil")
+			}
+		})
+	}
+}
+
+func Test_parseVersionAndCatalog(t *testing.T) {
+	tests := []struct {
+		name            string
+		input           string
+		expectedVersion string
+		expectedCatalog string
+	}{
+		{
+			name:            "version only",
+			input:           "2.0.0",
+			expectedVersion: "2.0.0",
+			expectedCatalog: "",
+		},
+		{
+			name:            "version with catalog",
+			input:           "2.0.0:giantswarm",
+			expectedVersion: "2.0.0",
+			expectedCatalog: "giantswarm",
+		},
+		{
+			name:            "version with sha suffix only",
+			input:           "2.0.0-164a75740365c5c21ca8aed69ebeb05f75c07fd8",
+			expectedVersion: "2.0.0-164a75740365c5c21ca8aed69ebeb05f75c07fd8",
+			expectedCatalog: "",
+		},
+		{
+			name:            "version with sha suffix and catalog",
+			input:           "2.0.0-164a75740365c5c21ca8aed69ebeb05f75c07fd8:cluster-test",
+			expectedVersion: "2.0.0-164a75740365c5c21ca8aed69ebeb05f75c07fd8",
+			expectedCatalog: "cluster-test",
+		},
+		{
+			name:            "version with prerelease and catalog",
+			input:           "2.0.0-alpha.1:giantswarm",
+			expectedVersion: "2.0.0-alpha.1",
+			expectedCatalog: "giantswarm",
+		},
+		{
+			name:            "empty catalog after colon",
+			input:           "2.0.0:",
+			expectedVersion: "2.0.0:",
+			expectedCatalog: "",
+		},
+		{
+			name:            "catalog with whitespace",
+			input:           "2.0.0: giantswarm ",
+			expectedVersion: "2.0.0",
+			expectedCatalog: "giantswarm",
+		},
+		{
+			name:            "v prefix version with catalog",
+			input:           "v2.0.0:default",
+			expectedVersion: "v2.0.0",
+			expectedCatalog: "default",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			version, catalog := parseVersionAndCatalog(tc.input)
+
+			if version != tc.expectedVersion {
+				t.Errorf("version mismatch: expected %q, got %q", tc.expectedVersion, version)
+			}
+
+			if catalog != tc.expectedCatalog {
+				t.Errorf("catalog mismatch: expected %q, got %q", tc.expectedCatalog, catalog)
 			}
 		})
 	}

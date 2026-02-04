@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Support overriding Release CR app versions via `E2E_OVERRIDE_VERSIONS` environment variable. Previously, this env var only worked for the cluster app (e.g., `cluster-aws`). Now it also applies overrides for bundled apps in the Release CR (e.g., `karpenter`, `aws-ebs-csi-driver`). Example: `E2E_OVERRIDE_VERSIONS="cluster-aws=1.2.3,karpenter=2.0.0,aws-ebs-csi-driver=4.1.0"`.
+- Support overriding Release CR app versions and catalogs via `E2E_OVERRIDE_VERSIONS` environment variable. Previously, this env var only worked for the cluster app (e.g., `cluster-aws`). Now it also applies overrides for bundled apps in the Release CR (e.g., `karpenter`, `aws-ebs-csi-driver`). Example: `E2E_OVERRIDE_VERSIONS="cluster-aws=7.2.5,aws-ebs-csi-driver=4.1.0:default,karpenter=2.0.0:giantswarm"`.
 
 ## [4.0.0] - 2026-01-08
 

@@ -51,8 +51,13 @@ func LoadOrBuildCluster(framework *clustertest.Framework, clusterBuilder Cluster
 // ApplyAppOverridesFromEnv reads the E2E_OVERRIDE_VERSIONS environment variable and applies
 // overrides for apps that are part of the Release CR.
 //
-// The E2E_OVERRIDE_VERSIONS env var is a comma-separated list of app=version pairs.
-// For example: "cluster-aws=1.2.3,karpenter=2.0.0,aws-ebs-csi-driver=4.1.0"
+// The E2E_OVERRIDE_VERSIONS env var is a comma-separated list of app=version[:catalog] pairs.
+// The catalog is optional; if not specified, the default catalog from clustertest is used.
+//
+// Examples:
+//   - "cluster-aws=1.2.3" - uses default catalog
+//   - "karpenter=2.0.0:giantswarm" - uses 'giantswarm' catalog
+//   - "cluster-aws=1.2.3,karpenter=2.0.0:giantswarm,aws-ebs-csi-driver=4.1.0:default"
 //
 // This function enables testing specific versions of bundled apps (like karpenter,
 // aws-ebs-csi-driver, etc.) that are defined in the Release CR.
@@ -72,18 +77,54 @@ func ApplyAppOverridesFromEnv(cluster *application.Cluster) *application.Cluster
 			continue
 		}
 		appName := strings.TrimSpace(parts[0])
-		version := strings.TrimSpace(parts[1])
+		versionAndCatalog := strings.TrimSpace(parts[1])
 
-		if appName == "" || version == "" {
+		if appName == "" || versionAndCatalog == "" {
 			continue
 		}
 
-		logger.Log("Attempting Release app override from E2E_OVERRIDE_VERSIONS: %s=%s", appName, version)
-		app := *application.New(appName, appName).WithVersion(version)
-		cluster = cluster.WithAppOverride(app)
+		// Parse version and optional catalog (format: version or version:catalog)
+		version, catalog := parseVersionAndCatalog(versionAndCatalog)
+
+		if version == "" {
+			continue
+		}
+
+		app := application.New(appName, appName).WithVersion(version)
+		if catalog != "" {
+			app = app.WithCatalog(catalog)
+			logger.Log("Attempting Release app override from E2E_OVERRIDE_VERSIONS: %s=%s (catalog: %s)", appName, version, catalog)
+		} else {
+			logger.Log("Attempting Release app override from E2E_OVERRIDE_VERSIONS: %s=%s", appName, version)
+		}
+		cluster = cluster.WithAppOverride(*app)
 	}
 
 	return cluster
+}
+
+// parseVersionAndCatalog splits a version string that may contain an optional catalog suffix.
+// Format: "version" or "version:catalog"
+// Returns the version and catalog (empty string if no catalog specified).
+func parseVersionAndCatalog(versionAndCatalog string) (version, catalog string) {
+	// Find the last colon to split version and catalog
+	// We use LastIndex because version strings can contain colons in edge cases,
+	// but catalog names should be simple identifiers
+	lastColonIdx := strings.LastIndex(versionAndCatalog, ":")
+	if lastColonIdx == -1 {
+		// No catalog specified
+		return versionAndCatalog, ""
+	}
+
+	version = strings.TrimSpace(versionAndCatalog[:lastColonIdx])
+	catalog = strings.TrimSpace(versionAndCatalog[lastColonIdx+1:])
+
+	// If catalog is empty after the colon, treat as no catalog
+	if catalog == "" {
+		return versionAndCatalog, ""
+	}
+
+	return version, catalog
 }
 
 // GetClusterBuilderForContext returns a suitable ClusterBuilder instance that supports the provided KubeContext

@@ -20,20 +20,25 @@ When using this module to standup a workload cluster it is expected that the `E2
 
 #### E2E_OVERRIDE_VERSIONS
 
-The `E2E_OVERRIDE_VERSIONS` environment variable allows you to override app versions when creating test clusters. This is useful for testing specific versions of apps.
+The `E2E_OVERRIDE_VERSIONS` environment variable allows you to override app versions and catalogs when creating test clusters. This is useful for testing specific versions of apps from specific catalogs.
 
-**Format:** Comma-separated list of `app-name=version` pairs.
+**Format:** Comma-separated list of `app-name=version[:catalog]` pairs. The catalog is optional.
 
-**Example:**
+**Examples:**
 ```bash
-export E2E_OVERRIDE_VERSIONS="cluster-aws=7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8,karpenter=2.0.0,aws-ebs-csi-driver=4.1.0"
+# Simple version override
+export E2E_OVERRIDE_VERSIONS="cluster-aws=7.2.5,karpenter=2.0.0"
+
+# Override with specific catalogs
+export E2E_OVERRIDE_VERSIONS="cluster-aws=7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8,aws-ebs-csi-driver=4.1.0:default,karpenter=2.0.0:giantswarm"
 ```
 
-This will:
-- Use the specified version for `cluster-aws` (the main cluster app)
-- Override `karpenter` and `aws-ebs-csi-driver` versions in the Release CR
+The second example will:
+- Use version `7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8` for `cluster-aws` (becomes `cluster-test` due to SHA suffix)
+- Override `aws-ebs-csi-driver` to version `4.1.0` from the `default` catalog
+- Override `karpenter` to version `2.0.0` from the `giantswarm` catalog
 
-**Note:** When using a version with a commit SHA suffix (e.g., `7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8`), the app catalog will automatically be changed to `<catalog>-test` (e.g., `cluster` → `cluster-test`).
+**Note:** When using a version with a commit SHA suffix (e.g., `7.2.5-164a75740365c5c21ca8aed69ebeb05f75c07fd8`) and no explicit catalog is specified, the app catalog will automatically be changed to `<catalog>-test` (e.g., `cluster` → `cluster-test`). If you specify an explicit catalog, it will be used as-is.
 
 ### KubeConfig Contexts
 
