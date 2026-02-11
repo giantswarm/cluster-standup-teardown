@@ -8,7 +8,7 @@ require (
 	github.com/giantswarm/clustertest/v3 v3.1.2
 	github.com/onsi/gomega v1.39.1
 	github.com/spf13/cobra v1.10.2
-	k8s.io/apimachinery v0.35.0
+	k8s.io/apimachinery v0.35.1
 	sigs.k8s.io/controller-runtime v0.23.1
 	sigs.k8s.io/yaml v1.6.0
 )
