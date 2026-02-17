@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Go: Update dependencies.
+- Go: Update `clustertest` to v3.1.3.
 
 ## [4.1.0] - 2026-02-04
 
