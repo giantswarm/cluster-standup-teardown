@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix `ApplyAppOverridesFromEnv` prematurely resolving the cluster app version and catalog. The `WithAppOverride` call triggers `IsDefaultApp` → `GetRelease` → `ClusterApp.Build()`, which has a side effect of setting the catalog to `cluster-test` when the version has a SHA suffix. This persisted through later `WithAppVersions("latest")` calls (e.g. in upgrade tests), causing Helm to look for stable chart versions in the test catalog.
+
 ## [4.1.1] - 2026-02-17
 
 ### Changed

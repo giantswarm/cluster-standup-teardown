@@ -218,6 +218,64 @@ func Test_ApplyAppOverridesFromEnv_VersionFormat(t *testing.T) {
 	}
 }
 
+func Test_ApplyAppOverridesFromEnv_DoesNotMutateClusterApp(t *testing.T) {
+	tests := []struct {
+		name     string
+		envValue string
+		provider application.Provider
+	}{
+		{
+			name:     "stable version override does not change cluster app",
+			envValue: "cluster-aws=5.2.1",
+			provider: application.ProviderAWS,
+		},
+		{
+			name:     "sha version override does not change cluster app catalog",
+			envValue: "cluster-aws=5.2.1-164a75740365c5c21ca8aed69ebeb05f75c07fd8",
+			provider: application.ProviderAWS,
+		},
+		{
+			name:     "override for bundled app does not change cluster app",
+			envValue: "karpenter=2.0.0-164a75740365c5c21ca8aed69ebeb05f75c07fd8",
+			provider: application.ProviderAWS,
+		},
+		{
+			name:     "mixed overrides do not change cluster app",
+			envValue: "cluster-aws=5.2.1-abc123def456abc123def456abc123def456abc1,karpenter=2.0.0:giantswarm",
+			provider: application.ProviderAWS,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			os.Setenv(env.OverrideVersions, tc.envValue)
+			defer os.Unsetenv(env.OverrideVersions)
+
+			cluster := application.NewClusterApp("test-cluster", tc.provider)
+
+			// Record original cluster app state
+			originalVersion := cluster.ClusterApp.Version
+			originalCatalog := cluster.ClusterApp.Catalog
+
+			result := ApplyAppOverridesFromEnv(cluster)
+
+			// The cluster app Version and Catalog must NOT be changed.
+			// WithAppOverride -> IsDefaultApp -> GetRelease -> Build() has a
+			// side effect that prematurely resolves the version and can change
+			// the catalog to "cluster-test". If this persists, later calls to
+			// WithAppVersions("latest") (e.g. in upgrade tests) will keep the
+			// stale catalog, causing Helm to look for a stable chart version
+			// in the test catalog where it does not exist.
+			if result.ClusterApp.Version != originalVersion {
+				t.Errorf("ClusterApp.Version was mutated: expected %q, got %q", originalVersion, result.ClusterApp.Version)
+			}
+			if result.ClusterApp.Catalog != originalCatalog {
+				t.Errorf("ClusterApp.Catalog was mutated: expected %q, got %q", originalCatalog, result.ClusterApp.Catalog)
+			}
+		})
+	}
+}
+
 func Test_parseVersionAndCatalog(t *testing.T) {
 	tests := []struct {
 		name            string
