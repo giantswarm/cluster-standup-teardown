@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.2] - 2026-02-25
+
 ### Fixed
 
 - Fix `ApplyAppOverridesFromEnv` prematurely resolving the cluster app version and catalog. The `WithAppOverride` call triggers `IsDefaultApp` → `GetRelease` → `ClusterApp.Build()`, which has a side effect of setting the catalog to `cluster-test` when the version has a SHA suffix. This persisted through later `WithAppVersions("latest")` calls (e.g. in upgrade tests), causing Helm to look for stable chart versions in the test catalog.
@@ -552,7 +554,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.2...HEAD
+[4.1.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.1...v4.1.2
 [4.1.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.0...v4.1.1
 [4.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.0.0...v4.1.0
 [4.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v3.0.0...v4.0.0
