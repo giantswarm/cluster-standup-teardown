@@ -71,6 +71,24 @@ func ApplyAppOverridesFromEnv(cluster *application.Cluster) *application.Cluster
 		return cluster
 	}
 
+	// Save the cluster app state before processing overrides.
+	// WithAppOverride() calls IsDefaultApp() which calls GetRelease() which
+	// calls c.ClusterApp.Build(). Build() has side effects: it resolves the
+	// cluster app version from E2E_OVERRIDE_VERSIONS and potentially changes
+	// the catalog to "<catalog>-test" when the version has a SHA suffix.
+	//
+	// This side effect is problematic because:
+	// 1. It prematurely resolves the cluster app version and catalog.
+	// 2. The catalog change is one-way (WithVersion only adds "-test", never
+	//    removes it), so if the version is later changed to a stable one
+	//    (e.g., via WithAppVersions("latest") in upgrade tests), the catalog
+	//    stays as "cluster-test" causing Helm to look for the stable version
+	//    in the test catalog where it doesn't exist.
+	//
+	// We save and restore the state to undo these side effects.
+	savedVersion := cluster.ClusterApp.Version
+	savedCatalog := cluster.ClusterApp.Catalog
+
 	for _, pair := range strings.Split(overrides, ",") {
 		parts := strings.Split(pair, "=")
 		if len(parts) != 2 {
@@ -99,6 +117,10 @@ func ApplyAppOverridesFromEnv(cluster *application.Cluster) *application.Cluster
 		}
 		cluster = cluster.WithAppOverride(*app)
 	}
+
+	// Restore the cluster app state to undo the Build() side effects.
+	cluster.ClusterApp.Version = savedVersion
+	cluster.ClusterApp.Catalog = savedCatalog
 
 	return cluster
 }
