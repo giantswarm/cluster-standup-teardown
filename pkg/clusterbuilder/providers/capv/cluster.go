@@ -6,9 +6,9 @@ import (
 	"github.com/giantswarm/cluster-standup-teardown/v4/pkg/values"
 
 	applicationv1alpha1 "github.com/giantswarm/apiextensions-application/api/v1alpha1"
-	"github.com/giantswarm/clustertest/v3/pkg/application"
-	"github.com/giantswarm/clustertest/v3/pkg/organization"
-	"github.com/giantswarm/clustertest/v3/pkg/utils"
+	"github.com/giantswarm/clustertest/v4/pkg/application"
+	"github.com/giantswarm/clustertest/v4/pkg/organization"
+	"github.com/giantswarm/clustertest/v4/pkg/utils"
 )
 
 const (
