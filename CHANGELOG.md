@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2026-03-18
+
 ### Changed
 
 - Bump `clustertest` from v3 to v4.0.0 (CAPI v1beta1 to v1beta2 migration).
@@ -559,7 +561,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.2...v5.0.0
 [4.1.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.1...v4.1.2
 [4.1.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.0...v4.1.1
 [4.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.0.0...v4.1.0
