@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `clustertest` to v4.0.1 (catalog suffix parsing, releases/sdk v0.12.0 for `dependsOn` preservation).
+
 ## [5.0.0] - 2026-03-18
 
 ### Changed
