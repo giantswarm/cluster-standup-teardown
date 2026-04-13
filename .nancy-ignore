@@ -5,3 +5,4 @@ CVE-2025-64329 until=2026-12-20 # github.com/containerd/containerd@v1.7.28
 CVE-2025-47914 until=2026-12-20 # golang.org/x/crypto@v0.43.0
 CVE-2025-58181 until=2026-12-20 # golang.org/x/crypto@v0.43.0
 CVE-2026-33186 until=2026-05-02 # google.golang.org/grpc@v1.79.1
+CVE-2026-35206 until=2026-05-13 # helm.sh/helm/v3@v3.20.0
