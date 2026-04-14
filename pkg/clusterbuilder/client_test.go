@@ -9,6 +9,7 @@ import (
 	"github.com/giantswarm/clustertest/v4/pkg/env"
 
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capmox"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capv"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capvcd"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capz"
@@ -53,6 +54,11 @@ func Test_GetClusterBuilderForContext(t *testing.T) {
 		{
 			inputValues:   "CAPA",
 			expected:      &capa.ClusterBuilder{},
+			expectedError: false,
+		},
+		{
+			inputValues:   "capmox",
+			expected:      &capmox.ClusterBuilder{},
 			expectedError: false,
 		},
 		{
