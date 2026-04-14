@@ -13,6 +13,7 @@ import (
 	"github.com/giantswarm/clustertest/v4/pkg/logger"
 
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capmox"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capv"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capvcd"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capz"
@@ -153,6 +154,7 @@ func parseVersionAndCatalog(versionAndCatalog string) (version, catalog string) 
 func GetClusterBuilderForContext(context string) (ClusterBuilder, error) {
 	knownBuilders := []ClusterBuilder{
 		&capa.ClusterBuilder{}, &capa.ManagedClusterBuilder{}, &capa.PrivateClusterBuilder{},
+		&capmox.ClusterBuilder{},
 		&capv.ClusterBuilder{}, &capz.PrivateClusterBuilder{},
 		&capvcd.ClusterBuilder{},
 		&capz.ClusterBuilder{},
