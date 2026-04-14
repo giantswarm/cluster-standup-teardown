@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.1.0] - 2026-04-14
+
 ### Added
 
 - Add cluster creation on Proxmox.
@@ -571,7 +573,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.1.0...HEAD
+[5.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.1...v5.1.0
 [5.0.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.2...v5.0.0
 [4.1.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.1...v4.1.2
