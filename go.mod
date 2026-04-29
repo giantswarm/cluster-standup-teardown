@@ -6,7 +6,7 @@ require (
 	dario.cat/mergo v1.0.2
 	github.com/giantswarm/apiextensions-application v0.6.2
 	github.com/giantswarm/clustertest/v4 v4.2.0
-	github.com/onsi/gomega v1.39.1
+	github.com/onsi/gomega v1.40.0
 	github.com/spf13/cobra v1.10.2
 	k8s.io/apimachinery v0.36.0
 	sigs.k8s.io/controller-runtime v0.23.3
