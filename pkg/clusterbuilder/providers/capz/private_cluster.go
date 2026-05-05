@@ -7,7 +7,7 @@ import (
 	"github.com/giantswarm/clustertest/v5/pkg/organization"
 	"github.com/giantswarm/clustertest/v5/pkg/utils"
 
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
 )
 
 var (
