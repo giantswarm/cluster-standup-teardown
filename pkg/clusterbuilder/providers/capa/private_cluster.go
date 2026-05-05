@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/organization"
-	"github.com/giantswarm/clustertest/v4/pkg/utils"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/organization"
+	"github.com/giantswarm/clustertest/v5/pkg/utils"
 
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/values"
 )
