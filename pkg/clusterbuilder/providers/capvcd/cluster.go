@@ -3,7 +3,7 @@ package capvcd
 import (
 	_ "embed"
 
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
 
 	"github.com/giantswarm/clustertest/v5/pkg/application"
 	"github.com/giantswarm/clustertest/v5/pkg/organization"
