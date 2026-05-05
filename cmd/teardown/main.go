@@ -11,9 +11,9 @@ import (
 	"github.com/giantswarm/cluster-standup-teardown/v5/cmd/standup/types"
 	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/teardown"
 
-	"github.com/giantswarm/clustertest/v4"
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/organization"
+	"github.com/giantswarm/clustertest/v5"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/organization"
 	"github.com/spf13/cobra"
 )
 

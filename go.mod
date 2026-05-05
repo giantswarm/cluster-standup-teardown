@@ -5,7 +5,7 @@ go 1.26.2
 require (
 	dario.cat/mergo v1.0.2
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest/v4 v4.3.1
+	github.com/giantswarm/clustertest/v5 v5.0.0
 	github.com/onsi/gomega v1.40.0
 	github.com/spf13/cobra v1.10.2
 	k8s.io/apimachinery v0.36.0
@@ -141,7 +141,7 @@ require (
 	golang.org/x/text v0.36.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.5.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260427160629-7cedc36a6bc4 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260504160031-60b97b32f348 // indirect
 	google.golang.org/grpc v1.81.0 // indirect
 	google.golang.org/protobuf v1.36.12-0.20260120151049-f2248ac996af // indirect
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
@@ -156,7 +156,7 @@ require (
 	k8s.io/cluster-bootstrap v0.36.0 // indirect
 	k8s.io/component-base v0.36.0 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
-	k8s.io/kube-openapi v0.0.0-20260502001324-b7f5293f4787 // indirect
+	k8s.io/kube-openapi v0.0.0-20260504175024-7bfe71ffdc10 // indirect
 	k8s.io/kubectl v0.36.0 // indirect
 	k8s.io/streaming v0.36.0 // indirect
 	k8s.io/utils v0.0.0-20260319190234-28399d86e0b5 // indirect
