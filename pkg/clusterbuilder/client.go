@@ -12,12 +12,12 @@ import (
 	"github.com/giantswarm/clustertest/v5/pkg/env"
 	"github.com/giantswarm/clustertest/v5/pkg/logger"
 
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capa"
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capmox"
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capv"
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capvcd"
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capz"
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/clusterbuilder/providers/capmox"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/clusterbuilder/providers/capv"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/clusterbuilder/providers/capvcd"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/clusterbuilder/providers/capz"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/values"
 )
 
 // ClusterBuilder is an interface that provides a function for building provider-specific Cluster apps

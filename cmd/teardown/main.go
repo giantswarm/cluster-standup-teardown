@@ -8,8 +8,8 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/cluster-standup-teardown/v6/cmd/standup/types"
-	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/teardown"
+	"github.com/giantswarm/cluster-standup-teardown/v7/cmd/standup/types"
+	"github.com/giantswarm/cluster-standup-teardown/v7/pkg/teardown"
 
 	"github.com/giantswarm/clustertest/v5"
 	"github.com/giantswarm/clustertest/v5/pkg/application"
