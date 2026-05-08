@@ -1,11 +1,11 @@
 module github.com/giantswarm/cluster-standup-teardown/v6
 
-go 1.26.2
+go 1.26.3
 
 require (
 	dario.cat/mergo v1.0.2
 	github.com/giantswarm/apiextensions-application v0.6.2
-	github.com/giantswarm/clustertest/v5 v5.0.0
+	github.com/giantswarm/clustertest/v5 v5.0.1
 	github.com/onsi/gomega v1.40.0
 	github.com/spf13/cobra v1.10.2
 	k8s.io/apimachinery v0.36.0
@@ -77,7 +77,7 @@ require (
 	github.com/google/gnostic-models v0.7.1 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-github/v84 v84.0.0 // indirect
-	github.com/google/go-github/v85 v85.0.0 // indirect
+	github.com/google/go-github/v86 v86.0.0 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674 // indirect
@@ -156,10 +156,10 @@ require (
 	k8s.io/cluster-bootstrap v0.36.0 // indirect
 	k8s.io/component-base v0.36.0 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
-	k8s.io/kube-openapi v0.0.0-20260505163821-33341827b392 // indirect
+	k8s.io/kube-openapi v0.0.0-20260507235316-19c3011e7fa0 // indirect
 	k8s.io/kubectl v0.36.0 // indirect
 	k8s.io/streaming v0.36.0 // indirect
-	k8s.io/utils v0.0.0-20260319190234-28399d86e0b5 // indirect
+	k8s.io/utils v0.0.0-20260507154919-ff6756f316d2 // indirect
 	oras.land/oras-go/v2 v2.6.0 // indirect
 	sigs.k8s.io/cluster-api v1.13.1 // indirect
 	sigs.k8s.io/e2e-framework v0.7.0 // indirect
