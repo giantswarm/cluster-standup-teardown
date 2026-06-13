@@ -15,8 +15,8 @@ WORKDIR /app
 COPY . .
 
 # Build the app.
-RUN GOOS="${TARGETOS}" GOARCH="${TARGETARCH}" CGO_ENABLED=0 go build -o standup cmd/standup
-RUN GOOS="${TARGETOS}" GOARCH="${TARGETARCH}" CGO_ENABLED=0 go build -o teardown cmd/teardown
+RUN GOOS="${TARGETOS}" GOARCH="${TARGETARCH}" CGO_ENABLED=0 go build -o standup ./cmd/standup
+RUN GOOS="${TARGETOS}" GOARCH="${TARGETARCH}" CGO_ENABLED=0 go build -o teardown ./cmd/teardown
 
 # Use Debian for running the app.
 FROM debian:trixie-slim
