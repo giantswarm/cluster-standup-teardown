@@ -11,6 +11,7 @@ CVE-2024-45310 until=2026-06-28
 CVE-2025-31133 until=2026-06-28
 CVE-2025-52565 until=2026-06-28
 CVE-2025-52881 until=2026-06-28
+CVE-2026-41579 until=2026-06-28
 
 # pkg:golang/github.com/ulikunitz/xz@v0.5.9
 CVE-2025-58058 until=2026-06-28
