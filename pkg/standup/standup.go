@@ -52,8 +52,9 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 				Commit:  "",
 			})
 	}
-	logger.Log("Workload cluster name: %s", cluster.Name)
-	logger.Log("Organisation name: %s", cluster.Organization.Name)
+	logger.Log("Cluster: %s", cluster.Name)
+	logger.Log("Organization: %s", cluster.Organization.Name)
+	logger.Log("Namespace: org-%s", cluster.Organization.Name)
 
 	// In certain cases, when connecting over the VPN, it is possible that the tunnel
 	// isn't ready and can take a short while to become usable. This attempts to wait
