@@ -2,3 +2,7 @@ CVE-2026-26958 until=2026-07-29 # filippo.io/edwards25519@v1.1.0
 CVE-2024-51744 until=2026-07-29 # github.com/golang-jwt/jwt/v4@v4.5.0
 CVE-2025-30204 until=2026-07-29 # github.com/golang-jwt/jwt/v4@v4.5.0
 CVE-2026-41178 until=2026-07-29 # go.opentelemetry.io/otel@v1.43.0
+CVE-2026-48978 until=2026-08-02 # oras.land/oras-go/v2@v2.6.0
+CVE-2026-50151 until=2026-08-02 # oras.land/oras-go/v2@v2.6.0
+CVE-2026-50162 until=2026-08-02 # oras.land/oras-go/v2@v2.6.0
+CVE-2026-50163 until=2026-08-02 # oras.land/oras-go/v2@v2.6.0
