@@ -55,6 +55,10 @@ contexts:
     user: glippy-admin
   name: capz
 - context:
+    cluster: glippy
+    user: glippy-admin
+  name: aks
+- context:
     cluster: grizzly
     user: grizzly-admin
   name: capa

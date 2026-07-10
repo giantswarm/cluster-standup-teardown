@@ -23,6 +23,7 @@ import (
 
 	"github.com/giantswarm/cluster-standup-teardown/v6/cmd/standup/types"
 	cb "github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capz"
 	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/standup"
 	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
 )
@@ -137,8 +138,9 @@ func run(cmd *cobra.Command, args []string) error {
 			WithAppVersions(clusterVersion)
 	}
 
-	if provider == application.ProviderEKS {
-		// As EKS has no control plane we only check for worker nodes being ready
+	if provider == application.ProviderEKS || provider == capz.ProviderAKS {
+		// As EKS and AKS have a managed control plane (no control-plane nodes are
+		// visible in the workload cluster) we only check for worker nodes being ready
 		clusterReadyFns = []func(wcClient *client.Client){func(wcClient *client.Client) {
 			_ = wait.For(
 				wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, client.DoesNotHaveLabels{"node-role.kubernetes.io/control-plane"}),

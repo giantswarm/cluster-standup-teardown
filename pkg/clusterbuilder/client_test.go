@@ -52,6 +52,11 @@ func Test_GetClusterBuilderForContext(t *testing.T) {
 			expectedError: false,
 		},
 		{
+			inputValues:   "aks",
+			expected:      &capz.ManagedClusterBuilder{},
+			expectedError: false,
+		},
+		{
 			inputValues:   "CAPA",
 			expected:      &capa.ClusterBuilder{},
 			expectedError: false,

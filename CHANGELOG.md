@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add cluster creation on AKS (CAPZ managed control plane), available via the `aks` KubeContext.
+
+### Changed
+
 - Docker: Cross-compile binaries.
 
 ## [6.0.1] - 2026-05-08

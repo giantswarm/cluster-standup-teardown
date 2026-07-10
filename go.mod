@@ -55,7 +55,7 @@ require (
 	github.com/giantswarm/microerror v0.4.1 // indirect
 	github.com/giantswarm/organization-operator v1.6.4 // indirect
 	github.com/giantswarm/release-operator/v4 v4.2.1 // indirect
-	github.com/giantswarm/releases/sdk v0.12.0 // indirect
+	github.com/giantswarm/releases/sdk v0.13.0 // indirect
 	github.com/go-errors/errors v1.5.1 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.9.0 // indirect
@@ -84,7 +84,6 @@ require (
 	github.com/google/btree v1.1.3 // indirect
 	github.com/google/gnostic-models v0.7.1 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/go-github/v84 v84.0.0 // indirect
 	github.com/google/go-github/v88 v88.0.0 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
