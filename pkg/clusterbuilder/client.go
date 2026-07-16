@@ -157,7 +157,7 @@ func GetClusterBuilderForContext(context string) (ClusterBuilder, error) {
 		&capmox.ClusterBuilder{},
 		&capv.ClusterBuilder{}, &capz.PrivateClusterBuilder{},
 		&capvcd.ClusterBuilder{},
-		&capz.ClusterBuilder{},
+		&capz.ClusterBuilder{}, &capz.ManagedClusterBuilder{},
 	}
 
 	for _, builder := range knownBuilders {
