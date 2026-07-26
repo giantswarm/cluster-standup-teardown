@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.2] - 2026-07-26
+
 ### Added
 
 - Add cluster creation on AKS (CAPZ managed control plane), available via the `aks` KubeContext.
@@ -14,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Docker: Cross-compile binaries.
+- Go: Update dependencies.
 
 ## [6.0.1] - 2026-05-08
 
@@ -599,7 +602,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.2...HEAD
+[6.0.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.2.0...v6.0.0
 [5.2.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.1.0...v5.2.0
