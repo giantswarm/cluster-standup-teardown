@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Cloud Director: Configure E2E tests to pull images through a local Zot instance.
+
 ## [6.0.2] - 2026-07-26
 
 ### Added
