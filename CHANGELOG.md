@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.3] - 2026-08-03
+
 ### Changed
 
 - Cloud Director: Configure E2E tests to pull images through a local Zot instance.
@@ -606,7 +608,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.3...HEAD
+[6.0.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.2.0...v6.0.0
