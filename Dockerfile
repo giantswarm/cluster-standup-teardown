@@ -5,7 +5,7 @@ FROM --platform=${BUILDPLATFORM} debian:trixie-slim AS certificates
 RUN apt-get update && apt-get install --yes ca-certificates
 
 # Use Go for building the app.
-FROM --platform=${BUILDPLATFORM} golang:1.26 AS app
+FROM --platform=${BUILDPLATFORM} golang:1.27 AS app
 
 ARG TARGETOS
 ARG TARGETARCH
