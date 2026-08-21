@@ -160,7 +160,7 @@ func Test_ApplyAppOverridesFromEnv(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			// Set environment variable
 			if tc.envValue != "" {
-				os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G304
+				os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G104
 				defer os.Unsetenv(env.OverrideVersions)
 			} else {
 				os.Unsetenv(env.OverrideVersions)
@@ -216,7 +216,7 @@ func Test_ApplyAppOverridesFromEnv_VersionFormat(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G304
+			os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G104
 			defer os.Unsetenv(env.OverrideVersions)
 
 			cluster := application.NewClusterApp("test-cluster", application.ProviderAWS)
@@ -259,7 +259,7 @@ func Test_ApplyAppOverridesFromEnv_DoesNotMutateClusterApp(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G304
+			os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G104
 			defer os.Unsetenv(env.OverrideVersions)
 
 			cluster := application.NewClusterApp("test-cluster", tc.provider)
