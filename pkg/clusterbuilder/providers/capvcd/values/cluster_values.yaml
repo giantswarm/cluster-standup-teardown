@@ -6,18 +6,6 @@ cluster:
           ntp:
             - "10.205.105.253"
 global:
-  components:
-    containerd:
-      containerRegistries:
-        # use a local Zot registry on the neoedge proxy machine for caching
-        gsoci.azurecr.io:
-          - endpoint: 10.205.105.253:5000
-            insecure: true
-      # disable use of the MC Zot registry
-      managementClusterRegistryCache:
-        enabled: false
-      localRegistryCache:
-        enabled: false
   connectivity:
     network:
       loadBalancers:

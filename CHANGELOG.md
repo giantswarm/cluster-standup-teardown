@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Go: Update dependencies.
+- Cloud Director: Configure E2E tests to pull images through MC again.
+
 ## [6.0.3] - 2026-08-03
 
 ### Changed
