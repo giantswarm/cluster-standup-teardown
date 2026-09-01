@@ -189,3 +189,5 @@ require (
 )
 
 replace github.com/ulikunitz/xz v0.5.9 => github.com/ulikunitz/xz v0.5.16
+
+replace github.com/opencontainers/runc v1.1.8 => github.com/opencontainers/runc v1.5.1
