@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Go: Update dependencies.
+- Update the AKS default cluster values to only include a System node pool. This aligns it with the default chart values.
 
 ## [6.0.7] - 2026-09-02
 
