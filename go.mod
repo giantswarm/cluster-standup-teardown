@@ -8,7 +8,7 @@ require (
 	github.com/giantswarm/clustertest/v5 v5.6.0
 	github.com/onsi/gomega v1.43.1
 	github.com/spf13/cobra v1.10.2
-	k8s.io/apimachinery v0.37.0
+	k8s.io/apimachinery v0.37.1
 	sigs.k8s.io/controller-runtime v0.25.1
 	sigs.k8s.io/yaml v1.6.0
 )
@@ -169,7 +169,7 @@ require (
 	k8s.io/klog/v2 v2.140.0 // indirect
 	k8s.io/kube-openapi v0.0.0-20260821135717-be32def86098 // indirect
 	k8s.io/kubectl v0.37.0 // indirect
-	k8s.io/streaming v0.37.0 // indirect
+	k8s.io/streaming v0.37.1 // indirect
 	k8s.io/utils v0.0.0-20260707023825-cf1189d6abe3 // indirect
 	oras.land/oras-go/v2 v2.6.2 // indirect
 	sigs.k8s.io/cluster-api v1.14.2 // indirect
