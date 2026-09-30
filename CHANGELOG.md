@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CAPZ: Use `minSize`/`maxSize` instead of `replicas` for node pools to enable autoscaling.
 
+## [6.0.9] - 2026-09-30
+
 ### Fixed
 
 - Remove the unsupported `instanceWarmup` node pool setting from the EKS cluster values. It never had an effect on EKS and fails the stricter `cluster-eks` values schema.
@@ -648,7 +650,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.8...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.9...HEAD
+[6.0.9]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.8...v6.0.9
 [6.0.8]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.7...v6.0.8
 [6.0.7]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.6...v6.0.7
 [6.0.6]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.5...v6.0.6
