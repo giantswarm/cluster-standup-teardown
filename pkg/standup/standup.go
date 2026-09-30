@@ -8,13 +8,13 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/clustertest/v4"
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	clustertestclient "github.com/giantswarm/clustertest/v4/pkg/client"
-	"github.com/giantswarm/clustertest/v4/pkg/env"
-	"github.com/giantswarm/clustertest/v4/pkg/logger"
-	"github.com/giantswarm/clustertest/v4/pkg/utils"
-	"github.com/giantswarm/clustertest/v4/pkg/wait"
+	"github.com/giantswarm/clustertest/v5"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	clustertestclient "github.com/giantswarm/clustertest/v5/pkg/client"
+	"github.com/giantswarm/clustertest/v5/pkg/env"
+	"github.com/giantswarm/clustertest/v5/pkg/logger"
+	"github.com/giantswarm/clustertest/v5/pkg/utils"
+	"github.com/giantswarm/clustertest/v5/pkg/wait"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
@@ -52,8 +52,9 @@ func (c *Client) Standup(cluster *application.Cluster) (*application.Cluster, er
 				Commit:  "",
 			})
 	}
-	logger.Log("Workload cluster name: %s", cluster.Name)
-	logger.Log("Organisation name: %s", cluster.Organization.Name)
+	logger.Log("Cluster: %s", cluster.Name)
+	logger.Log("Organization: %s", cluster.Organization.Name)
+	logger.Log("Namespace: org-%s", cluster.Organization.Name)
 
 	// In certain cases, when connecting over the VPN, it is possible that the tunnel
 	// isn't ready and can take a short while to become usable. This attempts to wait

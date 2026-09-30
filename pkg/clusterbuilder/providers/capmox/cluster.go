@@ -1,19 +1,13 @@
-package capv
+package capmox
 
 import (
 	_ "embed"
 
 	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
 
-	applicationv1alpha1 "github.com/giantswarm/apiextensions-application/api/v1alpha1"
 	"github.com/giantswarm/clustertest/v5/pkg/application"
 	"github.com/giantswarm/clustertest/v5/pkg/organization"
 	"github.com/giantswarm/clustertest/v5/pkg/utils"
-)
-
-const (
-	VSphereCredSecretName      = "vsphere-credentials" //nolint:gosec
-	VSphereCredSecretNamespace = "org-giantswarm"
 )
 
 var (
@@ -21,12 +15,12 @@ var (
 	baseClusterValues string
 )
 
-// ClusterBuilder is the CAPV ClusterBuilder
+// ClusterBuilder is the CAPMOX ClusterBuilder
 type ClusterBuilder struct {
 	CustomKubeContext string
 }
 
-// NewClusterApp builds a new CAPV cluster App
+// NewClusterApp builds a new CAPMOX cluster App
 func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
@@ -35,7 +29,7 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 		orgName = utils.GenerateRandomName("t")
 	}
 
-	return application.NewClusterApp(clusterName, application.ProviderVSphere).
+	return application.NewClusterApp(clusterName, application.ProviderProxmox).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
 			values.MustMergeValues(append([]string{baseClusterValues}, clusterValuesOverrides...)...),
@@ -43,15 +37,7 @@ func (c *ClusterBuilder) NewClusterApp(clusterName string, orgName string, clust
 				ClusterName:  clusterName,
 				Organization: orgName,
 			},
-		).
-		WithExtraConfigs([]applicationv1alpha1.AppExtraConfig{
-			{
-				Kind:      "secret",
-				Name:      VSphereCredSecretName,
-				Namespace: VSphereCredSecretNamespace,
-				Priority:  25,
-			},
-		})
+		)
 }
 
 // KubeContext returns the known KubeConfig context that this builder expects
@@ -59,5 +45,5 @@ func (c *ClusterBuilder) KubeContext() string {
 	if c.CustomKubeContext != "" {
 		return c.CustomKubeContext
 	}
-	return "capv"
+	return "capmox"
 }

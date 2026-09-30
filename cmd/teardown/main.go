@@ -8,12 +8,12 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/cluster-standup-teardown/v5/cmd/standup/types"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/teardown"
+	"github.com/giantswarm/cluster-standup-teardown/v6/cmd/standup/types"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/teardown"
 
-	"github.com/giantswarm/clustertest/v4"
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/organization"
+	"github.com/giantswarm/clustertest/v5"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/organization"
 	"github.com/spf13/cobra"
 )
 

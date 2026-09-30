@@ -3,9 +3,9 @@ package teardown
 import (
 	"context"
 
-	"github.com/giantswarm/clustertest/v4"
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/logger"
+	"github.com/giantswarm/clustertest/v5"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/logger"
 )
 
 // Client is the client responsible for handling cluster teardown

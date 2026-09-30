@@ -5,13 +5,14 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/env"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/env"
 
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capa"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capv"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capvcd"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capz"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capmox"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capv"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capvcd"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capz"
 )
 
 func Test_GetClusterBuilderForContext(t *testing.T) {
@@ -51,8 +52,18 @@ func Test_GetClusterBuilderForContext(t *testing.T) {
 			expectedError: false,
 		},
 		{
+			inputValues:   "aks",
+			expected:      &capz.ManagedClusterBuilder{},
+			expectedError: false,
+		},
+		{
 			inputValues:   "CAPA",
 			expected:      &capa.ClusterBuilder{},
+			expectedError: false,
+		},
+		{
+			inputValues:   "capmox",
+			expected:      &capmox.ClusterBuilder{},
 			expectedError: false,
 		},
 		{
@@ -149,7 +160,7 @@ func Test_ApplyAppOverridesFromEnv(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			// Set environment variable
 			if tc.envValue != "" {
-				os.Setenv(env.OverrideVersions, tc.envValue)
+				os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G104
 				defer os.Unsetenv(env.OverrideVersions)
 			} else {
 				os.Unsetenv(env.OverrideVersions)
@@ -205,7 +216,7 @@ func Test_ApplyAppOverridesFromEnv_VersionFormat(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			os.Setenv(env.OverrideVersions, tc.envValue)
+			os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G104
 			defer os.Unsetenv(env.OverrideVersions)
 
 			cluster := application.NewClusterApp("test-cluster", application.ProviderAWS)
@@ -248,7 +259,7 @@ func Test_ApplyAppOverridesFromEnv_DoesNotMutateClusterApp(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			os.Setenv(env.OverrideVersions, tc.envValue)
+			os.Setenv(env.OverrideVersions, tc.envValue) // #nosec G104
 			defer os.Unsetenv(env.OverrideVersions)
 
 			cluster := application.NewClusterApp("test-cluster", tc.provider)

@@ -1,4 +1,4 @@
-package capa
+package capz
 
 import (
 	_ "embed"
@@ -10,17 +10,24 @@ import (
 	"github.com/giantswarm/clustertest/v5/pkg/utils"
 )
 
+// ProviderAKS is the provider name used for the CAPZ managed (AKS) cluster app.
+//
+// The clustertest `application` package does not yet expose a constant for AKS,
+// so we define it here. The provider name determines the cluster app to use
+// (i.e. `cluster-aks`).
+const ProviderAKS application.Provider = "aks"
+
 var (
 	//go:embed values/managed-cluster_values.yaml
 	baseManagedClusterValues string
 )
 
-// ManagedClusterBuilder is the CAPA EKS ClusterBuilder
+// ManagedClusterBuilder is the CAPZ AKS ClusterBuilder
 type ManagedClusterBuilder struct {
 	CustomKubeContext string
 }
 
-// NewClusterApp builds a new CAPA EKS cluster App
+// NewClusterApp builds a new CAPZ AKS cluster App
 func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string, clusterValuesOverrides []string) *application.Cluster {
 	if clusterName == "" {
 		clusterName = utils.GenerateRandomName("t")
@@ -29,7 +36,7 @@ func (c *ManagedClusterBuilder) NewClusterApp(clusterName string, orgName string
 		orgName = utils.GenerateRandomName("t")
 	}
 
-	return application.NewClusterApp(clusterName, application.ProviderEKS).
+	return application.NewClusterApp(clusterName, ProviderAKS).
 		WithOrg(organization.New(orgName)).
 		WithAppValues(
 			values.MustMergeValues(append([]string{baseManagedClusterValues}, clusterValuesOverrides...)...),
@@ -45,5 +52,5 @@ func (c *ManagedClusterBuilder) KubeContext() string {
 	if c.CustomKubeContext != "" {
 		return c.CustomKubeContext
 	}
-	return "eks"
+	return "aks"
 }

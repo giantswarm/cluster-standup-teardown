@@ -1,0 +1,63 @@
+global:
+  metadata:
+    description: "E2E Test cluster"
+    name: "{{ .ClusterName }}"
+    organization: "{{ .Organization }}"
+  connectivity:
+    network:
+      controlPlaneEndpoint:
+        ipPoolName: "wc-cp-ips"
+      loadBalancers:
+        ipPoolName: "svc-lb-ips"
+        numberOfIps: 1
+    baseDomain: test.gigantic.io
+  controlPlane:
+    replicas: 3
+    machineTemplate:
+      disks:
+        bootVolume:
+          disk: scsi0
+          sizeGb: 50
+      network:
+        default:
+          bridge: vmbr0
+          model: virtio
+      memoryMiB: 16384
+      numCores: 2
+      numSockets: 2
+      pool: kubernetes
+      vmIDRange:
+        start: 201
+        end: 220
+  nodePools:
+    worker:
+      replicas: 3
+      disks:
+        bootVolume:
+          disk: scsi0
+          sizeGb: 30
+      network:
+        default:
+          bridge: vmbr0
+          model: virtio
+      memoryMiB: 8192
+      numCores: 2
+      numSockets: 2
+      pool: kubernetes
+      vmIDRange:
+        start: 221
+        end: 250
+  providerSpecific:
+    proxmox:
+      allowedNodes:
+        - pve
+      clusterName: "pve"
+      dnsServers:
+        - "1.1.1.1"
+        - "8.8.8.8"
+      ipv4Config:
+        addresses:
+          - 10.201.25.80-10.201.25.97
+        gateway: "10.201.25.254"
+        prefix: 23
+      insecure: true

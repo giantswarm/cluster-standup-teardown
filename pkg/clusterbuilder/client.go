@@ -7,16 +7,17 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/clustertest/v4"
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/env"
-	"github.com/giantswarm/clustertest/v4/pkg/logger"
+	"github.com/giantswarm/clustertest/v5"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/env"
+	"github.com/giantswarm/clustertest/v5/pkg/logger"
 
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capa"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capv"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capvcd"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder/providers/capz"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capa"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capmox"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capv"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capvcd"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capz"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
 )
 
 // ClusterBuilder is an interface that provides a function for building provider-specific Cluster apps
@@ -153,9 +154,10 @@ func parseVersionAndCatalog(versionAndCatalog string) (version, catalog string) 
 func GetClusterBuilderForContext(context string) (ClusterBuilder, error) {
 	knownBuilders := []ClusterBuilder{
 		&capa.ClusterBuilder{}, &capa.ManagedClusterBuilder{}, &capa.PrivateClusterBuilder{},
+		&capmox.ClusterBuilder{},
 		&capv.ClusterBuilder{}, &capz.PrivateClusterBuilder{},
 		&capvcd.ClusterBuilder{},
-		&capz.ClusterBuilder{},
+		&capz.ClusterBuilder{}, &capz.ManagedClusterBuilder{},
 	}
 
 	for _, builder := range knownBuilders {

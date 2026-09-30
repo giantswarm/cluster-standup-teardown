@@ -11,20 +11,21 @@ import (
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
 	"github.com/giantswarm/apiextensions-application/api/v1alpha1"
-	"github.com/giantswarm/clustertest/v4"
-	"github.com/giantswarm/clustertest/v4/pkg/application"
-	"github.com/giantswarm/clustertest/v4/pkg/client"
-	"github.com/giantswarm/clustertest/v4/pkg/organization"
-	"github.com/giantswarm/clustertest/v4/pkg/utils"
-	"github.com/giantswarm/clustertest/v4/pkg/wait"
+	"github.com/giantswarm/clustertest/v5"
+	"github.com/giantswarm/clustertest/v5/pkg/application"
+	"github.com/giantswarm/clustertest/v5/pkg/client"
+	"github.com/giantswarm/clustertest/v5/pkg/organization"
+	"github.com/giantswarm/clustertest/v5/pkg/utils"
+	"github.com/giantswarm/clustertest/v5/pkg/wait"
 	"github.com/spf13/cobra"
 	apitypes "k8s.io/apimachinery/pkg/types"
 	cr "sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/giantswarm/cluster-standup-teardown/v5/cmd/standup/types"
-	cb "github.com/giantswarm/cluster-standup-teardown/v5/pkg/clusterbuilder"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/standup"
-	"github.com/giantswarm/cluster-standup-teardown/v5/pkg/values"
+	"github.com/giantswarm/cluster-standup-teardown/v6/cmd/standup/types"
+	cb "github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/clusterbuilder/providers/capz"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/standup"
+	"github.com/giantswarm/cluster-standup-teardown/v6/pkg/values"
 )
 
 var (
@@ -137,8 +138,9 @@ func run(cmd *cobra.Command, args []string) error {
 			WithAppVersions(clusterVersion)
 	}
 
-	if provider == application.ProviderEKS {
-		// As EKS has no control plane we only check for worker nodes being ready
+	if provider == application.ProviderEKS || provider == capz.ProviderAKS {
+		// As EKS and AKS have a managed control plane (no control-plane nodes are
+		// visible in the workload cluster) we only check for worker nodes being ready
 		clusterReadyFns = []func(wcClient *client.Client){func(wcClient *client.Client) {
 			_ = wait.For(
 				wait.AreNumNodesReady(context.Background(), wcClient, workerNodes, client.DoesNotHaveLabels{"node-role.kubernetes.io/control-plane"}),

@@ -11,6 +11,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CAPZ: Use `minSize`/`maxSize` instead of `replicas` for node pools to enable autoscaling.
 
+### Fixed
+
+- Remove the unsupported `instanceWarmup` node pool setting from the EKS cluster values. It never had an effect on EKS and fails the stricter `cluster-eks` values schema.
+
+## [6.0.8] - 2026-09-24
+
+### Changed
+
+- Go: Update dependencies.
+- Update the AKS default cluster values to only include a System node pool. This aligns it with the default chart values.
+
+## [6.0.7] - 2026-09-02
+
+### Changed
+
+- Go: Update dependencies.
+
+## [6.0.6] - 2026-09-02
+
+### Changed
+
+- Go: Update dependencies.
+
+## [6.0.5] - 2026-08-22
+
+### Changed
+
+- Go: Update dependencies.
+
+## [6.0.4] - 2026-08-21
+
+### Changed
+
+- Go: Update dependencies.
+- Cloud Director: Configure E2E tests to pull images through MC again.
+
+## [6.0.3] - 2026-08-03
+
+### Changed
+
+- Cloud Director: Configure E2E tests to pull images through a local Zot instance.
+
+## [6.0.2] - 2026-07-26
+
+### Added
+
+- Add cluster creation on AKS (CAPZ managed control plane), available via the `aks` KubeContext.
+
+### Changed
+
+- Docker: Cross-compile binaries.
+- Go: Update dependencies.
+
+## [6.0.1] - 2026-05-08
+
+### Changed
+
+- Go: Update dependencies.
+
+## [6.0.0] - 2026-05-05
+
+### Changed
+
+- Go: Update `clustertest` to v5.0.0.
+
+## [5.2.0] - 2026-05-04
+
+### Changed
+
+- Go: Update dependencies.
+
+## [5.1.0] - 2026-04-14
+
+### Added
+
+- Add cluster creation on Proxmox.
+
 ## [5.0.1] - 2026-03-26
 
 ### Changed
@@ -571,7 +648,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.8...HEAD
+[6.0.8]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.7...v6.0.8
+[6.0.7]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.6...v6.0.7
+[6.0.6]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.5...v6.0.6
+[6.0.5]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.4...v6.0.5
+[6.0.4]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.3...v6.0.4
+[6.0.3]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.2...v6.0.3
+[6.0.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.1...v6.0.2
+[6.0.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.0...v6.0.1
+[6.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.2.0...v6.0.0
+[5.2.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.1.0...v5.2.0
+[5.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.1...v5.1.0
 [5.0.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.2...v5.0.0
 [4.1.2]: https://github.com/giantswarm/cluster-standup-teardown/compare/v4.1.1...v4.1.2
