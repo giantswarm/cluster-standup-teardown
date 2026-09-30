@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Remove the unsupported `instanceWarmup` node pool setting from the EKS cluster values. It never had an effect on EKS and fails the stricter `cluster-eks` values schema.
+
 ## [6.0.8] - 2026-09-24
 
 ### Changed
