@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.10] - 2026-10-01
+
 ### Changed
 
 - CAPZ: Use `minSize`/`maxSize` instead of `replicas` for node pools to enable autoscaling.
@@ -651,7 +653,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.9...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.10...HEAD
+[6.0.10]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.9...v6.0.10
 [6.0.9]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.8...v6.0.9
 [6.0.8]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.7...v6.0.8
 [6.0.7]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.6...v6.0.7
