@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - CAPZ: Use `minSize`/`maxSize` instead of `replicas` for node pools to enable autoscaling.
+- Go: Update dependencies.
 
 ## [6.0.9] - 2026-09-30
 
