@@ -1,45 +1,48 @@
-cluster:
-  providerIntegration:
-    components:
-      systemd:
-        timesyncd:
-          ntp:
-            - "10.205.105.253"
 global:
+  metadata:
+    name: "{{ .ClusterName }}"
+    description: "E2E Test cluster"
+    organization: "{{ .Organization }}"
+  providerSpecific:
+    site: https://cd.neoedge.cloud
+    userContext:
+      secretRef:
+        secretName: vcd-credentials
+    org: GIANT_SWARM
+    ovdc: Org-GIANT-SWARM
+    ovdcNetwork: GS-ISOLATED
   connectivity:
     network:
       loadBalancers:
-        vipSubnet: "10.205.9.254/24"
+        vipSubnet: 10.205.9.254/24
     proxy:
       enabled: true
-      httpProxy: "http://10.205.105.253:3128"
-      httpsProxy: "http://10.205.105.253:3128"
-      noProxy: "test.gigantic.io,10.205.105.0/24,cd.neoedge.cloud"
-    baseDomain: test.gigantic.io
-  metadata:
-    description: "E2E Test cluster"
-    organization: "{{ .Organization }}"
-    name: "{{ .ClusterName }}"
+      httpProxy: http://10.205.105.253:3128
+      httpsProxy: http://10.205.105.253:3128
+      noProxy: test.gigantic.io,10.205.105.0/24,cd.neoedge.cloud
   controlPlane:
-    replicas: 3
-    oidc:
-      clientId: "dex-k8s-authenticator"
-      groupsClaim: "groups"
-      issuerUrl: "https://dex.gerbil.test.gigantic.io"
-      usernameClaim: "email"
     machineTemplate:
+      sizingPolicy: 4cpu/8GoRAM
       diskSizeGB: 50
-      sizingPolicy: m1.large
+    oidc:
+      issuerUrl: https://dex.gerbil.test.gigantic.io
+      clientId: dex-k8s-authenticator
+      usernameClaim: email
+      groupsClaim: groups
+    replicas: 3
   nodePools:
     worker:
       sizingPolicy: m1.large
       diskSizeGB: 50
       replicas: 2
-  providerSpecific:
-    org: GIANT_SWARM
-    ovdc: Org-GIANT-SWARM
-    site: "https://cd.neoedge.cloud"
-    ovdcNetwork: GS-ISOLATED
-    userContext:
-      secretRef:
-        secretName: vcd-credentials
+
+cluster:
+  providerIntegration:
+    components:
+      systemd:
+        ntpd:
+          enabled: true
+          servers:
+          - address: 10.205.105.253
+            minpoll: 4
+            maxpoll: 4

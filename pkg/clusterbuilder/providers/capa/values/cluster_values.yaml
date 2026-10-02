@@ -8,9 +8,10 @@ global:
     region: eu-north-1
 
   controlPlane:
+    instanceType: c5a.xlarge
+    rootVolumeSizeGB: 10
     libVolumeSizeGB: 15
     etcdVolumeSizeGB: 50
-    rootVolumeSizeGB: 10
 
   # We need to pass the node pools otherwise the test called "has all the worker nodes running" will fail because it
   # expects to find the number of worker nodes in the helm values, but the value is not there if don't pass it, as it's
@@ -19,9 +20,10 @@ global:
   nodePools:
     # We are using a name with 10 chars which is the max number of characters allowed by our kyverno policies.
     nodepool-0:
-      maxSize: 5
-      minSize: 2
+      instanceType: t3.xlarge
       rootVolumeSizeGB: 25
+      minSize: 2
+      maxSize: 5
       # This can be probably removed once heartbeats are implemented
       # (https://github.com/aws/aws-node-termination-handler/issues/493), since then we would reduce
       # cluster-aws's defaults to a low value, let's say `heartbeatTimeout: 5m` and `globalTimeout: 30m`.

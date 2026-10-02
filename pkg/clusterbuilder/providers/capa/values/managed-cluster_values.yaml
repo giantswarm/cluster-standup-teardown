@@ -22,10 +22,10 @@ global:
   nodePools:
     # We are using a name with 10 chars which is the max number of characters allowed by our kyverno policies.
     nodepool-0:
-      instanceType: r6i.xlarge
-      maxSize: 3
-      minSize: 2
+      instanceType: t3.xlarge
       rootVolumeSizeGB: 25
+      minSize: 2
+      maxSize: 3
 
   apps:
     clusterAutoscaler:
