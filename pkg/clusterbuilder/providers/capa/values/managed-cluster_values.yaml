@@ -11,23 +11,23 @@ global:
     # disable logging to save cost
     logging:
       apiServer: false
-      audit: false
       authenticator: false
+      audit: false
       controllerManager: false
 
-  # We need to pass the node pools otherwise the test called "has all the worker nodes running" will fail because it
-  # expects to find the number of worker nodes in the helm values, but the value is not there if don't pass it, as it's
-  # defaulted in the chart template.
-  # @TODO: https://github.com/giantswarm/giantswarm/issues/28063
   nodePools:
-    # We are using a name with 10 chars which is the max number of characters allowed by our kyverno policies.
     nodepool-0:
-      instanceType: r6i.xlarge
-      maxSize: 3
-      minSize: 2
+      instanceType: t3.xlarge
       rootVolumeSizeGB: 25
+      minSize: 2
+      maxSize: 5
+      # Speed up the ASG cycle when upgrading to avoid having long running test case
+      instanceWarmup: 180
 
   apps:
+    externalDns:
+      values:
+        triggerLoopOnEvent: true
     clusterAutoscaler:
       values:
         configmap:

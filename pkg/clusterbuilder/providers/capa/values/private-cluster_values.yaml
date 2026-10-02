@@ -5,20 +5,14 @@ global:
     organization: "{{ .Organization }}"
 
   providerSpecific:
-    # The MC and the WC are connected using a Transit Gateway, and both need to be on the same region, so we use here the MC region
     region: eu-central-1
 
   connectivity:
-    baseDomain: gawsprivate.gigantic.io
-    availabilityZoneUsageLimit: 3
-    dns:
-      mode: public
+    topology:
+      mode: GiantSwarmManaged
+    vpcMode: private
     network:
       vpcCidr: 10.{{ index .ExtraValues "CIDRSecondOctet" }}.0.0/18
-    proxy:
-      enabled: true
-      httpProxy: http://proxy.operations.awsprod.gigantic.io:4000
-      httpsProxy: http://proxy.operations.awsprod.gigantic.io:4000
     subnets:
       - cidrBlocks:
           - availabilityZone: a
@@ -36,31 +30,26 @@ global:
           subnet.giantswarm.io/ingress: 'true'
           subnet.giantswarm.io/tgw: 'true'
           subnet.giantswarm.io/workers: 'true'
-    topology:
-      mode: GiantSwarmManaged
-    vpcMode: private
+    dns:
+      mode: public
+    proxy:
+      enabled: true
+      httpProxy: http://proxy.operations.awsprod.gigantic.io:4000
+      httpsProxy: http://proxy.operations.awsprod.gigantic.io:4000
 
   controlPlane:
+    instanceType: c5a.xlarge
+    rootVolumeSizeGB: 10
     libVolumeSizeGB: 15
     etcdVolumeSizeGB: 50
-    rootVolumeSizeGB: 10
     apiMode: private
 
-  # We need to pass the node pools otherwise the test called "has all the worker nodes running" will fail because it
-  # expects to find the number of worker nodes in the helm values, but the value is not there if don't pass it, as it's
-  # defaulted in the chart template.
-  # @TODO: https://github.com/giantswarm/giantswarm/issues/28063
   nodePools:
-    # We are using a name with 10 chars which is the max number of characters allowed by our kyverno policies.
     nodepool-0:
-      maxSize: 5
-      minSize: 2
+      instanceType: t3a.xlarge
       rootVolumeSizeGB: 25
-      # This can be probably removed once heartbeats are implemented
-      # (https://github.com/aws/aws-node-termination-handler/issues/493), since then we would reduce
-      # cluster-aws's defaults to a low value, let's say `heartbeatTimeout: 5m` and `globalTimeout: 30m`.
-      awsNodeTerminationHandler:
-        heartbeatTimeoutSeconds: 100
+      minSize: 2
+      maxSize: 5
       # Speed up the ASG cycle when upgrading to avoid having long running test case
       instanceWarmup: 180
 
@@ -77,8 +66,7 @@ global:
             dns01:
               route53:
                 enabled: true
-                # TODO Use a variable as soon as it is available.
-                region: "eu-north-1"
+                region: eu-north-1
     clusterAutoscaler:
       values:
         configmap:
