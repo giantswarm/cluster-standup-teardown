@@ -18,5 +18,5 @@ global:
     system:
       mode: System
       vmSize: Standard_D4as_v5
-      minSize: 1
-      maxSize: 2
+      minSize: 2
+      maxSize: 5

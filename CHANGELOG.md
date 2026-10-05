@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Increase the base number of nodes for managed clusters (AKS and EKS), to match the other providers.
+
 ## [6.0.10] - 2026-10-01
 
 ### Changed
