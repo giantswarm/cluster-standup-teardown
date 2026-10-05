@@ -1,35 +1,30 @@
 global:
   metadata:
-    description: "E2E Test cluster"
     name: "{{ .ClusterName }}"
+    description: "E2E Test cluster"
     organization: "{{ .Organization }}"
   connectivity:
     network:
-      controlPlaneEndpoint:
-        ipPoolName: "wc-cp-ips"
       loadBalancers:
-        ipPoolName: "svc-lb-ips"
         numberOfIps: 1
-    baseDomain: test.gigantic.io
   controlPlane:
-    replicas: 1
     machineTemplate:
-      folder: 'e2e-tests'
-      diskGiB: 30
+      folder: e2e-tests
       numCPUs: 4
-      memoryMiB: 8196
+      memoryMiB: 8192
+      diskGiB: 30
       network:
         devices:
-          - networkName: 'v500-data'
+          - networkName: v500-data
             dhcp4: true
   nodePools:
     worker:
-      replicas: 2
-      folder: 'e2e-tests'
+      folder: e2e-tests
+      numCPUs: 4
+      memoryMiB: 16384
       diskGiB: 30
-      numCPUs: 6
-      memoryMiB: 16896
       network:
         devices:
-          - networkName: 'v500-data'
+          - networkName: v500-data
             dhcp4: true
+      replicas: 2

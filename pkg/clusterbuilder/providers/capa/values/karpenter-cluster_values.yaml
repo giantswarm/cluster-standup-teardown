@@ -8,12 +8,12 @@ global:
     region: eu-north-1
 
   controlPlane:
+    instanceType: c5a.xlarge
+    rootVolumeSizeGB: 10
     libVolumeSizeGB: 15
     etcdVolumeSizeGB: 50
-    rootVolumeSizeGB: 10
 
   nodePools:
-    # We are using a name with 10 chars which is the max number of characters allowed by our kyverno policies.
     nodepool-0:
       type: karpenter
       rootVolumeSizeGB: 15

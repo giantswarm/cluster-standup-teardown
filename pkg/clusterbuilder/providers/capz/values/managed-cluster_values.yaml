@@ -3,20 +3,15 @@ global:
     name: "{{ .ClusterName }}"
     description: "E2E Test cluster"
     organization: "{{ .Organization }}"
-  connectivity:
-    baseDomain: azuretest.gigantic.io
   providerSpecific:
-    location: "westeurope"
     subscriptionId: 6b1f6e4a-6d0e-4aa4-9a5a-fbaca65a23b3
+    location: westeurope
   controlPlane:
     sku:
       tier: Standard
-  # We need to pass the node pools otherwise the test called "has all the worker nodes running" will fail because it
-  # expects to find the number of worker nodes in the helm values, but the value is not there if we don't pass it, as
-  # it's defaulted in the chart template.
   nodePools:
     system:
       mode: System
-      vmSize: Standard_D4as_v5
+      vmSize: Standard_B4as_v2
       minSize: 1
       maxSize: 2
