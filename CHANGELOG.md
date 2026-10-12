@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.11] - 2026-10-12
+
 ### Changed
 
 - Increase the base number of nodes for managed clusters (AKS and EKS), to match the other providers.
@@ -658,7 +660,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.10...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.11...HEAD
+[6.0.11]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.10...v6.0.11
 [6.0.10]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.9...v6.0.10
 [6.0.9]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.8...v6.0.9
 [6.0.8]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.7...v6.0.8
