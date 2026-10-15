@@ -19,8 +19,6 @@ global:
       instanceType: t3.xlarge
       minSize: 2
       maxSize: 5
-      # Speed up the ASG cycle when upgrading to avoid having long running test case
-      instanceWarmup: 180
 
   apps:
     externalDns:
