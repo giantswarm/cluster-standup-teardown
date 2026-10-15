@@ -27,3 +27,28 @@ global:
         configmap:
           # Prevent cluster-autoscaler from trying to scale down while we're in the middle of our scaling test
           scaleDownUnneededTime: 15m0s
+    securityBundle:
+      values:
+        apps:
+          trivy:
+            enabled: true
+          trivyOperator:
+            enabled: true
+        userConfig:
+          trivyOperator:
+            configMap:
+              values:
+                trivy-operator:
+                  compliance:
+                    # The default ('* */6 * * *') only fires during hours 0/6/12/18,
+                    # so reports would usually still be empty during a test run.
+                    cron: "*/5 * * * *"
+                  operator:
+                    clusterComplianceEnabled: true
+                    # Scanners that feed the CIS/NSA/PSS compliance reports.
+                    configAuditScannerEnabled: true
+                    infraAssessmentScannerEnabled: true
+                    rbacAssessmentScannerEnabled: true
+                    # Not needed for compliance reports; avoids vulnerability scan
+                    # jobs for every workload in the test cluster.
+                    vulnerabilityScannerEnabled: false

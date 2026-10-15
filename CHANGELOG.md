@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- capa: Enable trivy and trivy-operator with cluster compliance scanning (CIS, NSA, PSS) in the standard test cluster values, so e2e test runs produce compliance benchmark reports. The vulnerability scanner stays disabled and the compliance cron is tightened to every 5 minutes so reports are available within the test window.
+
 ## [6.1.0] - 2026-10-13
 
 ### Changed
