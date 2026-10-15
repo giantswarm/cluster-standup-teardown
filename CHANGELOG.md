@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.1.1] - 2026-10-15
+
 ### Fixed
 
 - Remove the unsupported `instanceWarmup` node pool setting from the EKS cluster values again. It was accidentally reintroduced in v6.1.0.
@@ -670,7 +672,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `standup` and `teardown` CLIs
 - Dockerfile containing the two CLIs
 
-[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.1.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.1.1...HEAD
+[6.1.1]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.1.0...v6.1.1
 [6.1.0]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.11...v6.1.0
 [6.0.11]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.10...v6.0.11
 [6.0.10]: https://github.com/giantswarm/cluster-standup-teardown/compare/v6.0.9...v6.0.10
