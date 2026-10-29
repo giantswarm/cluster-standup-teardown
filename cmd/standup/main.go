@@ -10,10 +10,11 @@ import (
 
 	. "github.com/onsi/gomega" // nolint:staticcheck
 
-	"github.com/giantswarm/apiextensions-application/api/v1alpha1"
+	fluxhelmv2 "github.com/fluxcd/helm-controller/api/v2"
 	"github.com/giantswarm/clustertest/v5"
 	"github.com/giantswarm/clustertest/v5/pkg/application"
 	"github.com/giantswarm/clustertest/v5/pkg/client"
+	"github.com/giantswarm/clustertest/v5/pkg/helmrelease"
 	"github.com/giantswarm/clustertest/v5/pkg/organization"
 	"github.com/giantswarm/clustertest/v5/pkg/utils"
 	"github.com/giantswarm/clustertest/v5/pkg/wait"
@@ -53,9 +54,13 @@ var (
 	// Functions to run after cluster creation to confirm it is up and ready to use
 	clusterReadyFns []func(wcClient *client.Client) = []func(wcClient *client.Client){
 		func(wcClient *client.Client) {
+			// Control plane nodes are joined one after another, so the timeout scales with their number. The first
+			// node is already registered once the WC API is reachable and only needs a few minutes to become ready,
+			// each further one needs a full machine provisioning, which can take up to 10 minutes on slower providers
+			// (e.g. Cloud Director).
 			_ = wait.For(
 				wait.AreNumNodesReady(context.Background(), wcClient, controlPlaneNodes, &cr.MatchingLabels{"node-role.kubernetes.io/control-plane": ""}),
-				wait.WithTimeout(20*time.Minute),
+				wait.WithTimeout(time.Duration(controlPlaneNodes)*10*time.Minute),
 				wait.WithInterval(15*time.Second),
 			)
 		},
@@ -152,24 +157,35 @@ func run(cmd *cobra.Command, args []string) error {
 	}
 
 	if waitForApps {
+		// Additionally wait for all HelmReleases of the cluster to be ready once the nodes are ready
 		clusterReadyFns = append(clusterReadyFns, func(wcClient *client.Client) {
-			fmt.Printf("Waiting for all Apps to be ready...\n")
-			_ = wait.For(func() (bool, error) {
-				appList := &v1alpha1.AppList{}
-				err := framework.MC().List(context.Background(), appList, cr.InNamespace(cluster.GetNamespace()), cr.MatchingLabels{"giantswarm.io/cluster": cluster.Name})
-				if err != nil {
-					return false, err
-				}
+			// wait.For calls the condition below every interval until it returns true or an error, or the timeout is
+			// reached. The result is ignored, so standup continues even if the HelmReleases never become ready.
+			_ = wait.For(
+				func() (bool, error) {
+					// List the HelmReleases created by the cluster chart. They already exist by the time the nodes are
+					// ready, as they are created alongside the Cluster resource in the same Helm install.
+					helmReleases := &fluxhelmv2.HelmReleaseList{}
+					err := framework.MC().List(context.Background(), helmReleases, cr.InNamespace(cluster.GetNamespace()), cr.MatchingLabels{"giantswarm.io/cluster": cluster.Name})
+					if err != nil {
+						// Returning an error stops the wait
+						return false, err
+					}
 
-				appNamespacedNames := []apitypes.NamespacedName{}
-				for _, app := range appList.Items {
-					appNamespacedNames = append(appNamespacedNames, apitypes.NamespacedName{Name: app.Name, Namespace: app.Namespace})
-				}
+					// Collect the name and namespace of each HelmRelease, as AreAllReady expects
+					namespacedNames := []apitypes.NamespacedName{}
+					for _, helmRelease := range helmReleases.Items {
+						namespacedNames = append(namespacedNames, apitypes.NamespacedName{Name: helmRelease.Name, Namespace: helmRelease.Namespace})
+					}
 
-				return wait.IsAllAppDeployed(context.Background(), framework.MC(), appNamespacedNames)()
-			},
+					// AreAllReady builds a check that logs the status of each HelmRelease and returns an error if any
+					// isn't ready yet. We call it right away and treat that error as "not done" rather than as a
+					// failure, so wait.For keeps polling.
+					return helmrelease.AreAllReady(context.Background(), framework.MC(), namespacedNames)() == nil, nil
+				},
 				wait.WithTimeout(20*time.Minute),
-				wait.WithInterval(15*time.Second))
+				wait.WithInterval(15*time.Second),
+			)
 		})
 	}
 
