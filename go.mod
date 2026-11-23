@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	dario.cat/mergo v1.0.2
-	github.com/fluxcd/helm-controller/api v1.7.1
+	github.com/fluxcd/helm-controller/api v1.7.2
 	github.com/giantswarm/apiextensions-application v0.6.2
 	github.com/giantswarm/clustertest/v5 v5.6.7
 	github.com/onsi/gomega v1.44.0
